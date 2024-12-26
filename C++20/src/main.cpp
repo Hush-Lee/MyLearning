@@ -1,5 +1,5 @@
-	#include <iostream>
-	int main(){
-		std::cout<<"Hello World\n";
-		return 0;
-	}
+#include "../include/common.hpp"
+int main(){
+	print("Hello World! \n");
+	return 0;
+}

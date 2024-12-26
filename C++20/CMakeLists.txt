@@ -1,6 +1,7 @@
 	cmake_minimum_required(VERSION 3.30)
 	project(C++20  LANGUAGES CXX)
 	
+	set(CMAKE_CXX_COMPLIER=clang++)
 	set(CXX_STANDARD 20)
 	set(CXX_STANdARF_REQUIRED OFF)
 	set(CXX_EXTENTIONS OFF)
