@@ -1,1 +1,1 @@
-	add_executable(LinuxSystemProgram main.cpp)
+	add_executable(BroadCast main.cpp)

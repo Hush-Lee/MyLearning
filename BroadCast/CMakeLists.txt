@@ -1,5 +1,5 @@
 	cmake_minimum_required(VERSION 3.30)
-	project(LinuxSystemProgram  LANGUAGES CXX)
+	project(BroadCast  LANGUAGES CXX)
 	
 	set(CXX_STANDARD 20)
 	set(CXX_STANdARF_REQUIRED OFF)
