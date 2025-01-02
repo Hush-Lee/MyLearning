@@ -1,5 +1,5 @@
-	#include <iostream>
-	int main(){
-		std::cout<<"Hello World\n";
-		return 0;
-	}
+#include "../include/file.hpp"
+int main(){
+	test_file();
+	return 0;
+}
