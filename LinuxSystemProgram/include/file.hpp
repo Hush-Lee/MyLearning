@@ -2,6 +2,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <system_error>
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,6 +25,30 @@ void dupL(std::string name){
 	puts("Hello world\n");
 }
 
+
+void cntlL(){}
+	//fcntl manipulate file
+	//ioctl manipulate device
+	// /dev/fd virtual dir	
+
+void fileLength(const char *fname){
+	struct stat statres;
+	if(stat(fname,&statres)<0){
+		perror("stat()");
+		exit(1);
+	}
+	printf("%ld",statres.st_size);
+}
+
+
+
+
+
+
+
+
+
 void test_file(){
 	dupL("tmp/test");
+	fileLength("tmp/test");
 }
