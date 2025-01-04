@@ -47,7 +47,6 @@ void fileLength(const char *fname){
 
 
 
-
 void test_file(){
 	dupL("tmp/test");
 	fileLength("tmp/test");
