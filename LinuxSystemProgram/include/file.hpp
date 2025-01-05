@@ -42,12 +42,36 @@ void fileLength(const char *fname){
 
 
 
+void f_type(const char * fname){
+	struct stat statres;
+	if(stat(fname,&statres)<0){
+		perror("stat{}");
+		exit(1);
+	}
+	if(S_ISREG(statres.st_mode)){
+		printf("_");
+	}else if(S_ISDIR(statres.st_mode)){
+		printf("d");
+	}else if(S_ISSOCK(statres.st_mode)){
+		printf("s");
+	}else if(S_ISBLK(statres.st_mode)){
+		printf("b");
+	}else if(S_ISCHR(statres.st_mode)){
+		printf("c");
+	}else if(S_ISFIFO(statres.st_mode)){
+		printf("p");
+	}else{
+		printf("?");
+	}
+
+}
 
 
 
 
 
 void test_file(){
-	dupL("tmp/test");
-	fileLength("tmp/test");
+//	dupL("tmp/test");
+//	fileLength("tmp/test");
+	f_type(("tmp/file"));
 }
