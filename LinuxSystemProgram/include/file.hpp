@@ -2,11 +2,12 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include <system_error>
+#include <glob.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
+#include <dirent.h>
 
 void dupL(std::string name){
 	int fd;
@@ -66,6 +67,33 @@ void f_type(const char * fname){
 
 }
 
+void globL(const char * path){
+	glob_t gt;
+	if(glob(path,0,nullptr,&gt)){
+		printf("Error");
+		exit(1);
+	}
+	for(int i=0;i<gt.gl_pathc;++i){
+		puts(gt.gl_pathv[i]);
+	}
+	globfree(&gt);
+	exit(0);
+}
+
+void dirL(const char * path){
+	DIR *dp;
+	struct dirent *cur;
+	dp=opendir(path);
+	if(dp==nullptr)	{
+		perror("opendir()");
+		exit(1);
+	}
+	while((cur=readdir(dp))!=nullptr){
+		puts(cur->d_name);
+	}
+	closedir(dp);
+}
+
 
 
 
@@ -73,5 +101,7 @@ void f_type(const char * fname){
 void test_file(){
 //	dupL("tmp/test");
 //	fileLength("tmp/test");
-	f_type(("tmp/file"));
+//	f_type(("tmp/file"));
+//	globL("tmp/*/*");
+	dirL("tmp");
 }
