@@ -76,6 +76,7 @@ static void mydu(const char * path,int64_t& res){
 			mydu(gt.gl_pathv[i],res);
 		}
 	}
+	globfree(&gt);
 
 }
 

@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <string>
 #include <dirent.h>
+#include <pwd.h>
 
 void dupL(std::string name){
 	int fd;
@@ -94,14 +95,23 @@ void dirL(const char * path){
 	closedir(dp);
 }
 
+void uidL(char * uid){
+	struct passwd *pwdline;
+	pwdline=getpwuid(atoi(uid));
+	puts(pwdline->pw_name);
+	exit(0);
+}
 
 
 
 
-void test_file(){
+
+
+void test_file(char **argv){
 //	dupL("tmp/test");
 //	fileLength("tmp/test");
 //	f_type(("tmp/file"));
 //	globL("tmp/*/*");
-	dirL("tmp");
+//	dirL("tmp");
+	uidL(argv[1]);
 }

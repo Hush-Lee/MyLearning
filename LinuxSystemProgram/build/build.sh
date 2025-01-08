@@ -1,3 +1,4 @@
 cmake ..
 cmake --build .
-./src/LinuxSystemProgram
+./src/LinuxSystemProgram $*
+
