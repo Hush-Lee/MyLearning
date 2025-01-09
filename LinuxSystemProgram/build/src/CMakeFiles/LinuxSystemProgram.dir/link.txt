@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/LinuxSystemProgram.dir/main.cpp.o -o LinuxSystemProgram
+/usr/bin/c++ CMakeFiles/LinuxSystemProgram.dir/main.cpp.o -o LinuxSystemProgram  -lcrypt

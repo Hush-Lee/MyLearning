@@ -1,1 +1,3 @@
-	add_executable(LinuxSystemProgram main.cpp)
+add_executable(LinuxSystemProgram main.cpp)
+
+target_link_libraries(LinuxSystemProgram crypt)
