@@ -1,6 +1,6 @@
 #pragma once
 
-#define  DEFAULT_PLAYERCMD "/usr/bin/vlc > /dev/bull";
+#define  DEFAULT_PLAYERCMD "/usr/bin/vlc - > /dev/bull";
 
 struct client_conf_st{
 	char * rcvport;

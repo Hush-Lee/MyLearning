@@ -1,9 +1,10 @@
 #pragma once
 
+#include <cstdint>
 #include <stdlib.h>
 #include "site_type.hpp"
-const char* DEFAULT_MGROUP = R"224.2.2.2";
-const char* DEFAULT_RCVPORT = R"1989";
+const char* DEFAULT_MGROUP = "224.2.2.2";
+const char* DEFAULT_RCVPORT = "1989";
 const int CHNNR = 100;
 const int MINCHNID = 1;
 const int LISTCHNID =0;
@@ -24,6 +25,7 @@ struct msg_channel_st{
 
 struct msg_listentry_st{
 	chnid_t chnid;
+	uint16_t len;
 	uint8_t desc[1];
 }__attribute__((packed));
 
