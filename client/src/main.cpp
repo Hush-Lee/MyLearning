@@ -7,6 +7,7 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <unistd.h>
+#include <net/if.h>
 
 /*
  *  -M --mgroup 指定多播组

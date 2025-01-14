@@ -3,15 +3,15 @@
 #include <cstdint>
 #include <stdlib.h>
 #include "site_type.hpp"
-const char* DEFAULT_MGROUP = "224.2.2.2";
-const char* DEFAULT_RCVPORT = "1989";
-const int CHNNR = 100;
-const int MINCHNID = 1;
-const int LISTCHNID =0;
-const int MAXCHNID = MINCHNID+CHNNR-1;
-const int MSG_CHANNEL_MAX=65536-20-8;
-const int MSG_LIST_MAX = 65535 -20-8;
-const int MAX_ENTRY=MSG_LIST_MAX-sizeof(chnid_t);
+#define  DEFAULT_MGROUP  "224.2.2.2"
+#define  DEFAULT_RCVPORT  "1989"
+#define  CHNNR  100
+#define  MINCHNID  1
+#define  LISTCHNID  0
+#define  MAXCHNID  MINCHNID+CHNNR-1
+#define  MSG_CHANNEL_MAX 65536-20-8
+#define  MSG_LIST_MAX  65535 -20-8
+#define  MAX_ENTRY MSG_LIST_MAX-sizeof(chnid_t)
 
 inline int maxData(){
 	return MSG_CHANNEL_MAX - sizeof(chnid_t);
