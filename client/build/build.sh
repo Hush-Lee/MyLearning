@@ -1,3 +1,3 @@
 	cmake ..
 	cmake --build .
-	./src/client
+	./src/client $*
