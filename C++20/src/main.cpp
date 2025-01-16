@@ -1,5 +1,6 @@
-#include "../include/common.hpp"
+#include <common.hpp>
+#include <mul_thr.hpp>
 int main(){
-	print("Hello World! \n");
+	test();
 	return 0;
 }

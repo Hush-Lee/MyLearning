@@ -1,3 +1,3 @@
-	cmake ..
-	cmake --build .
-	./src/BroadCast
+cmake ..
+cmake --build .
+./src/BroadCast
