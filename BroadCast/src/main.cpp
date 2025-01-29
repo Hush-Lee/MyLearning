@@ -2,6 +2,7 @@
 #include <cerrno>
 #include <csignal>
 #include <cstring>
+#include <netinet/in.h>
 #include <sys/stat.h>
 #include <sys/syslog.h>
 #include <syslog.h>
@@ -11,6 +12,9 @@
 #include <proto.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <sys/socket.h>
+#include <netinet/ip.h>
+#include <net/if.h>
 // -M	指定多播组
 // -P	指定端口
 // -F	前台运行
@@ -90,6 +94,23 @@ static int daemonize(void){
 	chdir("/");
 	umask(0);
 }
+static int socket_init(void){
+	int serv_sd=socket(AF_INET,SOCK_DGRAM,0);
+	if(serv_sd<0){
+		syslog(LOG_ERR,"socket():%s",strerror(errno));
+		exit(1);
+	}
+	struct ip_mreqn mreq;
+	inet_pton(AF_INET,server_conf.mgroup,&mreq.imr_multiaddr);
+	inet_pton(AF_INET,"0.0.0.0",&mreq.imr_address);
+	mreq.imr_ifindex = if_nametoindex(server_conf.ifname);
+
+
+	if(setsockopt(serv_sd,IPPROTO_IP,IP_MULTICAST_IF, &mreq,sizeof(mreq))<0){
+		syslog(LOG_ERR, "setsockopt()%s",strerror(errno));
+		exit(1);
+	}
+}
 
 int main(int argc,char **argv){
 
@@ -118,6 +139,20 @@ int main(int argc,char **argv){
 		syslog(LOG_ERR,"EINVAL server_conf.runmode.");
 		exit(1);
 	}
+	socket_init();
+	
+	struct mlib_listentry_st *list;
+	int list_size;
+	int err=mlib_getchnlist( &list, &list_size);
+
+	thr_list_create(list,list_size);
+
+	int i;
+	for(i = 0;i<list_size;++i){
+		thr_channel_create(list + i);
+	}
+
+	syslog(LOG_DEBUG, "%d channel threads created.",i);
 	while(1){
 		pause();
 	}
