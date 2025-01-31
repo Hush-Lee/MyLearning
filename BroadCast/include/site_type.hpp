@@ -1,2 +1,4 @@
 #pragma once
-using chnid_t=uint8_t;
+
+#include <stdint.h>
+#define chnid_t uint8_t
