@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include <stdio.h>
 #include <stdlib.h>
 #include <glob.h>
@@ -20,6 +21,11 @@ struct channel_context_st{
 struct channel_context_st channel[MAXCHNID];
 int mlib_getchnlist(struct mlib_listentry_st **result, int *resnum){
 	char path[PATHSIZE];
+	struct mlib_listentry_st *ptr;
+	struct channel_context_st *res;
+	
+
+
 	for(int i=0;i<=MAXCHNID;++i){
 		channel[i].chnid=-1;
 			
@@ -29,11 +35,18 @@ int mlib_getchnlist(struct mlib_listentry_st **result, int *resnum){
 	if(glob(path,0,nullptr,&globes)!=0){
 		return -1;
 	}
+
+	ptr=malloc(sizeof(struct mlib_listentry_st) * globes.gl_pathc);
+	if(ptr == nullptr){
+		syslog(LOG_ERR,"malloc() error");
+		exit(1);
+	}
 	int num=0;
 	for(int i=0;i<globes.gl_pathc;++i){
 		path2entry(globes.gl_pathv[i]);
 		++num;
 	}
+	*result
 	*resnum=num;
 	
 }
