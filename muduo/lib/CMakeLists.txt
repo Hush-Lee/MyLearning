@@ -1,0 +1,25 @@
+add_library(socket
+	STATIC 
+	socket.hpp
+	socket.cpp
+)
+add_library(channel
+	STATIC 
+	channel.hpp
+	channel.cpp
+)
+add_library(buffer
+	STATIC 
+	buffer.hpp
+	buffer.cpp
+)
+add_library(eventLoop
+	STATIC 
+	eventLoop.hpp
+	eventLoop.cpp
+)
+add_library(timer
+	STATIC 
+	timer.hpp
+	timer.cpp
+)
