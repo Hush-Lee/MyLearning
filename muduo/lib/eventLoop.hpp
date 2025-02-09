@@ -13,6 +13,7 @@ public:
 		}
 	}
 	bool isINLoopThread()const{return threadID_==std::this_thread::get_id();}
+	EventLoop* getEventLoopOfCurrentThread();
 
 private:
 	void abortNotInLoopThread();
