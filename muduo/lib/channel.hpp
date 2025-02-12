@@ -2,10 +2,10 @@
 #include "common.hpp"
 #include <functional>
 class EventLoop;
-class Channal:nocopyable{
+class Channel:nocopyable{
 public:
 	typedef std::function<void()> EventCallback;
-	Channal(EventLoop* loop,int fd);
+	Channel(EventLoop* loop,int fd);
 	void handleEvent();
 	void setReadCallback(const EventCallback& cb){
 		readCallback_=cb;
@@ -13,7 +13,7 @@ public:
 	void setWriteCallback(const EventCallback& cb){
 		writeCallback_=cb;
 	}
-	void setErrorCallback(const EventCallback& cb){
+	void getErrorCallback(const EventCallback& cb){
 		errorCallback_=cb;
 	}
 

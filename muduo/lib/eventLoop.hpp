@@ -1,4 +1,5 @@
 #pragma once
+#include "channel.hpp"
 #include"common.hpp"
 #include <atomic>
 #include <thread>
@@ -14,6 +15,7 @@ public:
 	}
 	bool isINLoopThread()const{return threadID_==std::this_thread::get_id();}
 	static EventLoop* getEventLoopOfCurrentThread();
+	void updateChannel(Channel* ch);
 
 private:
 	void abortNotInLoopThread();

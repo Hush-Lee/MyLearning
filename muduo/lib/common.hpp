@@ -1,12 +1,5 @@
 #pragma once
 
-class Channel;
-class EventLoop;
-class timer;
-class buffer;
-
-
-
 class nocopyable{
 public:
 	nocopyable()=default;
