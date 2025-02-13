@@ -1,11 +1,18 @@
 #pragma once
 
-class nocopyable{
+class Channel;
+class EventLoop;
+class Poller;
+class Buffer;
+class timer;
+class socket;
+
+class noncopyable{
 public:
-	nocopyable()=default;
+	noncopyable()=default;
 private:
-	nocopyable(nocopyable& t);
-	nocopyable(nocopyable&& t);
-	nocopyable& operator =(nocopyable& t);
-	nocopyable& operator =(nocopyable&& t);
+	noncopyable(noncopyable& t);
+	noncopyable(noncopyable&& t);
+	noncopyable& operator =(noncopyable& t);
+	noncopyable& operator =(noncopyable&& t);
 };
