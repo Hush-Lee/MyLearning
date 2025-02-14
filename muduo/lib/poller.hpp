@@ -13,5 +13,14 @@ namespace muduo {
 			void assertInLoopThread(){
 				ownerLoop_->assertInLoopThread();
 			}
+		private:
+			void fillActiveChannels(int numEvents,ChannelList* activeChannels)const;
+			typedef std::vector<struct pollfd> PollFdList;
+			typedef std::map<int,Channel*> ChannelMap;
+
+			EventLoop* ownerLoop_;
+			PollFdList pollfds_;
+			ChannelMap channels_;
+
 	}
 }
