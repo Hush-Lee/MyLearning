@@ -1,7 +1,11 @@
 #pragma once
+#include <unordered_map>
 #include <vector>
-struct pollfd;
 #include "common.hpp"
+#include <sys/time.h>
+//typedef struct timeval Timestamp;
+
+struct pollfd;
 namespace muduo {
 	class Poller:noncopyable{
 		public:
@@ -16,11 +20,11 @@ namespace muduo {
 		private:
 			void fillActiveChannels(int numEvents,ChannelList* activeChannels)const;
 			typedef std::vector<struct pollfd> PollFdList;
-			typedef std::map<int,Channel*> ChannelMap;
+			typedef std::unordered_map<int,Channel*> ChannelMap;
 
 			EventLoop* ownerLoop_;
 			PollFdList pollfds_;
 			ChannelMap channels_;
 
-	}
+	};
 }
