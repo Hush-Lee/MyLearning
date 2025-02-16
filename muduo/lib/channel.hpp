@@ -3,7 +3,7 @@
 #include <functional>
 class EventLoop;
 namespace  {
-	class Channel:noncopyable{
+	class Channel:muduo::noncopyable{
 	public:
 		typedef std::function<void()> EventCallback;
 		Channel(EventLoop* loop,int fd);

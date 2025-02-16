@@ -2,6 +2,7 @@
 #include "channel.hpp"
 #include"common.hpp"
 #include <atomic>
+#include <memory>
 #include <thread>
 namespace muduo {
 	class EventLoop:noncopyable{
@@ -22,7 +23,10 @@ namespace muduo {
 		void abortNotInLoopThread();
 
 		std::atomic_bool looping_;
-		std::thread::id threadID_;
+		const std::thread::id threadId_;
+		std::unique_ptr<Poller> poller_;
+		std::atomic_bool quit;
+
 
 	};
 }
