@@ -4,8 +4,8 @@ namespace muduo {
 	class EventLoop;
 	class Poller;
 	class Buffer;
-	class timer;
-	class socket;
+	class Timer;
+	class Socket;
 	class Timestamp;
 
 	class noncopyable{
