@@ -7,6 +7,7 @@ namespace muduo {
 	class Timer;
 	class Socket;
 	class Timestamp;
+	class TimerQueue;
 
 	class noncopyable{
 	public:
