@@ -9,11 +9,12 @@ namespace muduo{
 			TimerQueue(EventLoop*loop);
 			~TimerQueue();
 			TimerID addTimer(const TimerCallback& cb,Timestamp wehn,double interval);
-			typedef std::pair<Timestamp,Timer> Entry ;;
+			typedef std::pair<Timestamp,Timer> Entry ;
 			typedef std::set<Entry> TimerList ;
+			void  addTimerInLoop(Timer* timer);
 			void handleRead();
 			std::vector<Entry> getExpired(Timestamp now);
-			bool insert(std::unique_ptr<Timer> timer);
+			bool insert(Timer *timer);
 
 			EventLoop* loop_;
 			const int timerfd_;
