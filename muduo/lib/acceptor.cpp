@@ -1,4 +1,5 @@
 #include "acceptor.hpp"
+#include <sys/socket.h>
 #include <functional>
 muduo::Acceptor::Acceptor(EventLoop*loop,const InetAddress&listenAddr):loop_(loop),acceptSocket_(sockets::createNonblockingOrDie()),acceprChannel_(loop,acceptSocket_.fd()),listenning_(false){
 	acceptSocket_.setReuseAddr(true);
@@ -12,3 +13,26 @@ void muduo::Acceptor::listen(){
 	acceptSocket_.listen();
 	acceptChannel_.enableReading();
 }
+
+
+int muduo::Sockets::createNonblockingOrDie(){
+	int sockfd = ::socket(AF_INET,SOCK_STREAM|SOCK_NONBLOCK|SOCK_CLOEXEC,IPPROTO_TCP);
+	if(sockfd < 0){
+		LOG_SYSFATAL<<"sockets::createNonblockingOrDie";
+	}
+	return sockfd;
+}
+
+void muduo::Acceptor::handleRead(){
+	loop_->assertInLoopThread();
+	InetAddress peerAddr(0);
+	int connfd = acceptSocket_.accept(&peerAddr);
+	if(connfd>=0){
+		if(newConnectionCallback_){
+			newConnectionCallback_(connfd,peerAddr);
+		}else{
+			Sockets::close(connfd);
+		}		
+	}
+}
+

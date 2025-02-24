@@ -3,6 +3,11 @@
 
 #include "common.hpp"
 namespace muduo {
+	class Sockets{
+		public:
+			int createNonblockingOrDie();
+			int accept(int sockfd,sockaddr_in*addr);
+	};
 	class Acceptor:muduo::noncopyable{
 		public:
 			typedef std::function<void(int sockfd,const InetAddress&)>  NewConnectionCallback;
