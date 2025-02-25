@@ -1,4 +1,6 @@
 #include "acceptor.hpp"
+#include "common.hpp"
+#include <cerrno>
 #include <sys/socket.h>
 #include <functional>
 muduo::Acceptor::Acceptor(EventLoop*loop,const InetAddress&listenAddr):loop_(loop),acceptSocket_(sockets::createNonblockingOrDie()),acceprChannel_(loop,acceptSocket_.fd()),listenning_(false){
@@ -36,3 +38,20 @@ void muduo::Acceptor::handleRead(){
 	}
 }
 
+
+int muduo::Sockets::accept(int sockfd,struct sockaddr_in* addr){
+	socklen_t addrlen=sizeof(*addr);
+#if VALGRIND
+	int connfd=::accept(sockfd,sockaddr_cast(addr),&addrlen);
+#else
+	int connfd=::accept4(sockfd,sockaddr_cast(addr),&addrlen,SOCK_NONBLOCK|SOCK_CLOEXEC);
+#endif
+	if(connfd<0){
+		int  saveErrno=errno;
+		LOG_SYSERR<<"Socket::accept";
+		switch (saveErrno) {
+		
+		}
+	}
+	return connfd;
+}
