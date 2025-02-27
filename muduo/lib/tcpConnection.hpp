@@ -11,7 +11,7 @@ class TcpConnection:muduo::noncopyable{
 		enum StateE{
 			kConnecting,
 			kConnected,
-		}
+		};
 		void setState(StateE s){state_=s;}
 		void handleRead();
 		muduo::EventLoop* loop_;
