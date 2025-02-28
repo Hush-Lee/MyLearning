@@ -7,6 +7,7 @@ namespace  {
 	public:
 		typedef std::function<void()> EventCallback;
 		Channel(EventLoop* loop,int fd);
+		~Channel();
 		void handleEvent();
 		void setReadCallback(const EventCallback& cb){
 			readCallback_=cb;
@@ -43,7 +44,7 @@ namespace  {
 		int events_;
 		int revents_;
 		int index_;
-
+		bool eventHandling_;
 		EventCallback readCallback_;
 		EventCallback writeCallback_;
 		EventCallback errorCallback_;

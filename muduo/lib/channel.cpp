@@ -1,3 +1,4 @@
+#include <cassert>
 #include <sys/poll.h>
 #include "channel.hpp"
 #include "eventLoop.hpp"
@@ -18,6 +19,7 @@ void Channel::update(){
 }
 
 void Channel::handleEvent(){
+	eventHandling_=true;
 	if(revents_&POLLNVAL){
 		LOG_WARN << "Channel::handle_event() POLLNVAL";
 	}
@@ -36,4 +38,9 @@ void Channel::handleEvent(){
 			writeCallback_();
 		}
 	}
+	eventHandling_=false;
+}
+
+Channel::~Channel(){
+	assert(!eventHandling_);
 }
