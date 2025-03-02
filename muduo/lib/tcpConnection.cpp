@@ -1,4 +1,7 @@
+#include <cassert>
+#include <cstdlib>
 #include <cstring>
+#include <memory>
 #include <unistd.h>
 #include <sys/types.h>
 #include "tcpConnection.hpp"
@@ -32,4 +35,14 @@ void TcpConnection::handleRead(){
 void TcpConnection::handleError(){
 	int err=muduo::Socket::getSocketError(channel_->fd());
 	LOG_ERROR<<"TcpConnection::handleError ["<<name_<<"] - SO_ERROR = "<<err<<" "<<strerror_tl(err);
+}
+
+
+void  TcpConnection::connectDestroyed(){
+	loop_->assertInLoopThread();
+	assert(state_==kConnected);
+	setState(kDisconnected);
+	channel_->disableAll();
+	connectionCallback_(shared_from_this());
+	loop_->removeChannel(std::get_pointer_safety(channel_));
 }

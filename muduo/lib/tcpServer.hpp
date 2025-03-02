@@ -1,5 +1,6 @@
 #pragma once 
 #include "common.hpp"
+#include "tcpConnection.hpp"
 #include <memory>
 namespace muduo {
 	class TcpServe:noncopyable{
@@ -13,6 +14,7 @@ namespace muduo {
 			void setMessageCallback(const MessageCallback& cb){
 				messageCallback_=cb;
 			}
+			void removeConnection(const TcpConnection&conn);
 		private:
 			void newConnection(int sockfd,const InetAddress& peerAddr);
 			typedef std::map<std::string,TcpConnectionPtr>ConnectionMap ;
