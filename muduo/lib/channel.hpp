@@ -6,10 +6,11 @@ namespace  {
 	class Channel:muduo::noncopyable{
 	public:
 		typedef std::function<void()> EventCallback;
+		typedef std::function<void(muduo::Timestamp)> ReadEventCallback;
 		Channel(EventLoop* loop,int fd);
 		~Channel();
 		void handleEvent();
-		void setReadCallback(const EventCallback& cb){
+		void setReadCallback(const ReadEventCallback& cb){
 			readCallback_=cb;
 		}
 		void setWriteCallback(const EventCallback& cb){
@@ -45,7 +46,7 @@ namespace  {
 		int revents_;
 		int index_;
 		bool eventHandling_;
-		EventCallback readCallback_;
+		ReadEventCallback readCallback_;
 		EventCallback writeCallback_;
 		EventCallback errorCallback_;
 

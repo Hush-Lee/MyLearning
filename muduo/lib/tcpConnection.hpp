@@ -31,4 +31,5 @@ class TcpConnection:muduo::noncopyable{
 		ConnectionCallback connectionCallback_;
 		MessageCallback messageCallback_;
 		CloseCallback closeCallback_;
+		muduo::Buffer inputBuffer_;
 }
