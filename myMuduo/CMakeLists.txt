@@ -1,0 +1,10 @@
+	cmake_minimum_required(VERSION 3.30)
+	project(myMuduo  LANGUAGES CXX)
+	
+	set(CXX_STANDARD 20)
+	set(CXX_STANdARF_REQUIRED OFF)
+	set(CXX_EXTENTIONS OFF)
+	add_subdirectory(lib)
+	add_subdirectory(src)
+	add_subdirectory(test)
+	enable_testing()
