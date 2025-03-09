@@ -6,10 +6,12 @@
 
 class Buffer{
 public:
+	static const int kCheapPrepend=8;
+	static const size_t kInitialiSize=1024;
+
 	ssize_t readFd(int fd,int *savedErr);
 	ssize_t writeFd(int fd,int *savedErr);
-	static const size_t kInitialiSize=1024;
-	const char* peek() const;
+	char* peek();
 	size_t readableBytes()const;
 	void retrieve(size_t len);
 	void retrieveAll();
