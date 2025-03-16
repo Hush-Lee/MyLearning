@@ -1,5 +1,4 @@
 #pragma once
-class Buffer;
 class Timer;
 class Timestamp;
 class Logger;
