@@ -1,10 +1,11 @@
 #pragma once
 
 #include "Classes.hpp"
+#include <cstdint>
 #include <cstring>
 
 const int kSmallBuffer=4000;
-const int kLargerBuffer=4000*1000;
+const int kLargeBuffer=4000*1000;
 
 template<int SIZE>
 class FixedBuffer:noncopyable{
@@ -139,3 +140,23 @@ private:
 	static const  int kMaxNumberSize{48};
 };
 
+class Fmt:noncopyable{
+public:
+	template<typename T>
+	Fmt(const char* fmt,T val);
+	const char* data()const{return buf_;}
+	int length()const{return length_;}
+private:
+	char buf_[32];
+	int length_;
+};
+
+
+
+inline LogStream& operator<<(LogStream&s,const Fmt& fmt){
+	s.append(fmt.data(),fmt.length());
+	return s;
+}
+
+std::string formatSI(int64_t n);
+std::string formatIEC(int64_t n):

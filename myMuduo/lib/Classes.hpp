@@ -2,7 +2,7 @@
 class Timer;
 class Timestamp;
 class Logger;
-
+class Buffer;
 class noncopyable{
 protected:
 	noncopyable()=default;
