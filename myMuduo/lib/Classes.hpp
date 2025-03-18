@@ -3,6 +3,10 @@ class Timer;
 class Timestamp;
 class Logger;
 class Buffer;
+class EventLoop;
+class Poller;
+class Channel;
+class TimerQueue;
 class noncopyable{
 protected:
 	noncopyable()=default;
