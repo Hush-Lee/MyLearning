@@ -1,5 +1,6 @@
 #pragma once
 class Timer;
+class TimerId;
 class Timestamp;
 class Logger;
 class Buffer;
