@@ -1,4 +1,5 @@
 #pragma once
+#include <cstring>
 class Timer;
 class TimerId;
 class Timestamp;
@@ -8,6 +9,11 @@ class EventLoop;
 class Poller;
 class Channel;
 class TimerQueue;
+
+inline void memZero(void * p,size_t n){
+	memset(p, 0, n);
+}
+
 class noncopyable{
 protected:
 	noncopyable()=default;

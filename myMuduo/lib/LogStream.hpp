@@ -3,6 +3,7 @@
 #include "Classes.hpp"
 #include <cstdint>
 #include <cstring>
+#include <string>
 
 const int kSmallBuffer=4000;
 const int kLargeBuffer=4000*1000;

@@ -15,8 +15,7 @@
 
 #include <sstream>
 
-namespace muduo
-{
+
 
 /*
 class LoggerImpl
@@ -109,9 +108,6 @@ Logger::OutputFunc g_output = defaultOutput;
 Logger::FlushFunc g_flush = defaultFlush;
 TimeZone g_logTimeZone;
 
-}  // namespace muduo
-
-using namespace muduo;
 
 Logger::Impl::Impl(LogLevel level, int savedErrno, const SourceFile& file, int line)
   : time_(Timestamp::now()),

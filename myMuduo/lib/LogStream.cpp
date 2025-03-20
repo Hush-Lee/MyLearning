@@ -4,6 +4,7 @@
 // Author: Shuo Chen (chenshuo at chenshuo dot com)
 
 #include "LogStream.hpp"
+#include <string>
 
 #include <algorithm>
 #include <limits>

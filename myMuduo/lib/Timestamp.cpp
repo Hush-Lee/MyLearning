@@ -4,7 +4,6 @@
 #include <cstdint>
 #include <cstdio>
 #include <ctime>
-#include <string>
 #include <inttypes.h>
 #include <sys/select.h>
 static_assert(sizeof(Timestamp)==sizeof(int64_t),"Timestamp should be same size as int64_t");
@@ -14,6 +13,7 @@ std::string Timestamp::toString()const{
 	auto seconds=microSecondSinceEpoch_/kMicrosecondsPerSecond;
 	auto microseconds=microSecondSinceEpoch_%kMicrosecondsPerSecond;
 	snprintf(buf,sizeof(buf), "%" PRId64 ".%06" PRId64,seconds,microseconds);
+	return std::string(buf);
 }
 
 std::string Timestamp::toFormattedString(bool showMicroseconds)const{
