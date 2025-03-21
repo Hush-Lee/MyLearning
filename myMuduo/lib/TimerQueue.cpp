@@ -1,8 +1,10 @@
 #include "TimerQueue.hpp"
+#include "EventLoop.hpp"
 #include "Logging.hpp"
 #include "Timestamp.hpp"
 #include <cstdint>
 #include <ctime>
+#include <functional>
 #include <sys/time.h>
 #include <sys/timerfd.h>
 #include <unistd.h>
@@ -39,5 +41,21 @@ void resetTimerfd(int timerfd,Timestamp expired){
 	struct itimerspec oldValue;
 	memZero(&newValue,sizeof(newValue));
 	memZero(&oldValue,sizeof(oldValue));
+	newValue.it_value=howMuchTimeFromNow(expired);
+	int ret=::timerfd_settime(timerfd, 0,&newValue,&oldValue);
+	if(ret){
+		LOG_SYSERR<<"timerfd_settime";
+	}
 }
 
+
+
+
+TimerQueue::TimerQueue(EventLoop* loop):loop_(loop),
+	timerfd_(creatTiemrFd()),
+	timerfdChannel_(loop,timerfd_),
+	timers_(),
+	callingExpiredTimer_(false){
+		timerfdChannel_.setReadCallback(std::bind(&TimerQueue::handleRead(),this));
+		timerfdChannel_.enableReading();
+	}
