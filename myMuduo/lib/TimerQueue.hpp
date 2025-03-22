@@ -7,7 +7,7 @@ class TimerQueue:noncopyable{
 public:
 	explicit TimerQueue(EventLoop* loop);
 	~TimerQueue();
-	TimerId addTimer(TimerCallback&cb,Timestamp when,double interval);
+	TimerId addTimer(TimerCallback cb,Timestamp when,double interval);
 	void cancel(TimerId timerid);
 private:
 	using Entry=std::pair<Timestamp,Timer*>;
@@ -16,7 +16,7 @@ private:
 	using ActiveTimerSet=std::set<ActiveTimer>;
 
 	void addTimerInLoop(Timer* timer);
-	void cancelInLoop(TimerId* timerId);
+	void cancelInLoop(TimerId timerId);
 	void handleRead();
 	std::vector<Entry> getExpired(Timestamp now);
 	void reset(const std::vector<Entry>& expired,Timestamp now);

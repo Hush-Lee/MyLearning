@@ -1,7 +1,11 @@
 #include "TimerQueue.hpp"
-#include "EventLoop.hpp"
+#include "Callback.hpp"
+#include "Classes.hpp"
 #include "Logging.hpp"
+#include "TimerId.hpp"
+#include "Timer.hpp"
 #include "Timestamp.hpp"
+#include <cassert>
 #include <cstdint>
 #include <ctime>
 #include <functional>
@@ -50,12 +54,47 @@ void resetTimerfd(int timerfd,Timestamp expired){
 
 
 
-
 TimerQueue::TimerQueue(EventLoop* loop):loop_(loop),
 	timerfd_(creatTiemrFd()),
 	timerfdChannel_(loop,timerfd_),
 	timers_(),
 	callingExpiredTimer_(false){
-		timerfdChannel_.setReadCallback(std::bind(&TimerQueue::handleRead(),this));
+		timerfdChannel_.setReadCallback(std::bind(&TimerQueue::handleRead,this));
 		timerfdChannel_.enableReading();
 	}
+TimerQueue::~TimerQueue(){
+	timerfdChannel_.disableAll();
+	timerfdChannel_.remove();
+	::close(timerfd_);
+	for(const Entry& timer:timers_){
+		delete timer.second;
+	}
+}
+
+
+TimerId TimerQueue::addTimer(TimerCallback cb,Timestamp when,double interval){
+	Timer* timer=new Timer(std::move(cb),when,interval);
+	loop_->runInLoop(std::bind(&TimerQueue::addTimerInLoop,this,timer));
+	return TimerId(timer,timer->sequence());
+}
+
+void TimerQueue::cancel(TimerId timerid){
+	loop_->runInLoop(std::bind(&TimerQueue::cancelInLoop,this,timerid));
+}
+
+void TimerQueue::addTimerInLoop(Timer* timer){
+	loop_->assertInLoopThread();
+	bool earliestChanged = insert(timer);
+	if(earliestChanged){
+		resetTimerfd(timerfd_, timer->expiration());
+	}
+}
+
+void TimerQueue::cancelInLoop(TimerId timerid){
+	loop_->assertInLoopThread();
+	assert(timers_.size() == activeTimers_.size());
+	ActiveTimer timer(timerid.timer_,timerid.sequence_);
+}
+
+
+

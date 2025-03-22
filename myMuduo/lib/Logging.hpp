@@ -70,7 +70,7 @@ class Logger
   typedef void (*FlushFunc)();
   static void setOutput(OutputFunc);
   static void setFlush(FlushFunc);
-  static void setTimeZone(const TimeZone& tz);
+  //static void setTimeZone(const TimeZone& tz);
 
  private:
 
