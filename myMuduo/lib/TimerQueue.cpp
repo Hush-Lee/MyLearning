@@ -5,13 +5,18 @@
 #include "TimerId.hpp"
 #include "Timer.hpp"
 #include "Timestamp.hpp"
+#include <algorithm>
 #include <cassert>
+#include <cstddef>
 #include <cstdint>
+#include <cstdlib>
 #include <ctime>
 #include <functional>
+#include <iterator>
 #include <sys/time.h>
 #include <sys/timerfd.h>
 #include <unistd.h>
+#include <vector>
 int creatTiemrFd(){
 	int timerfd=::timerfd_create(CLOCK_MONOTONIC,TFD_NONBLOCK|TFD_CLOEXEC);
 	if(timerfd<0){
@@ -97,7 +102,47 @@ void TimerQueue::cancelInLoop(TimerId timerid){
 	auto it=activeTimers_.find(timer);
 	if(it!=activeTimers_.end()){
 		size_t n=timers_.erase(Entry(it->first->expiration(),it->first));
+		assert(n==1);
+		(void)n;
+		delete it->first;
+		activeTimers_.erase(it);
+	}else if(callingExpiredTimer_){
+		cancelingTimers_.insert(timer);
 	}
+	assert(timers_.size()==activeTimers_.size());
+}
+
+void TimerQueue::handleRead(){
+	loop_->assertInLoopThread();
+	Timestamp now(Timestamp::now());
+	readTimerfd(timerfd_,now);
+	std::vector<Entry>expired=getExpired(now);
+	callingExpiredTimer_=true;
+	cancelingTimers_.clear();
+	for(const auto & it :  expired){
+		it.second->run();
+	}
+	callingExpiredTimer_=false;
+	reset(expired,now);
+}
+
+
+std::vector<TimerQueue::Entry> TimerQueue::getExpired(Timestamp now){
+	assert(timers_.size()==activeTimers_.size());
+	std::vector<Entry> expired;
+	Entry sentry(now,reinterpret_cast<Timer*>(UINTPTR_MAX));
+	auto end = timers_.lower_bound(sentry);
+	assert(end==timers_.end()|now<end->first);
+	std::copy(timers_.begin(),end,std::back_inserter(expired));
+	timers_.erase(timers_.begin(),end);
+	for(const auto &it :expired){
+		ActiveTimer timer(it.second,it.second->sequence());
+		size_t n=activeTimers_.erase(timer);
+		assert(n==1);
+		(void)n;
+	}
+	assert(timers_.size()==activeTimers_.size());
+	return expired;
 }
 
 
