@@ -12,8 +12,7 @@ public:
 	~Channel();
 
 	void handleEvent(Timestamp receiveTime);
-	void setReadCallback(ReadEventCallback cb)
-	{ readCallback_ = std::move(cb); }
+	void setReadCallback(ReadEventCallback cb) { readCallback_ = std::move(cb); }
 	void setWriteCallback(EventCallback cb)
 	{ writeCallback_ = std::move(cb); }
 	void setCloseCallback(EventCallback cb)
