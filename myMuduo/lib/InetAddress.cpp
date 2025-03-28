@@ -3,7 +3,9 @@
 #include "Endian.hpp"
 #include <cstddef>
 #include <cstdint>
+#include <cstring>
 #include <netinet/in.h>
+#include <string_view>
 #include <sys/socket.h>
 
 
@@ -35,3 +37,11 @@ InetAddress::InetAddress(uint16_t portArg,bool loopbackOnly,bool ipv6){
 		addr_.sin_addr.s_addr=hostToNetwork32(ip);
 	}
 }
+
+InetAddress::InetAddress(std::string_view ip,uint16_t portArg,bool ipv6){
+	if(ipv6||strchr(ip.data(),':')){
+		memZero(&addr6_,sizeof(addr6_));
+		fromIpPort(ip.data(),portArg,&addr6_);
+	}
+}
+
