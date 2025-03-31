@@ -1,10 +1,15 @@
 #include "InetAddress.hpp"
 #include "Classes.hpp"
 #include "Endian.hpp"
+#include "SocketOps.hpp"
+#include "Logging.hpp"
+#include <netdb.h>
+#include <cassert>
 #include <cstddef>
 #include <cstdint>
 #include <cstring>
 #include <netinet/in.h>
+#include <string>
 #include <string_view>
 #include <sys/socket.h>
 
@@ -41,7 +46,57 @@ InetAddress::InetAddress(uint16_t portArg,bool loopbackOnly,bool ipv6){
 InetAddress::InetAddress(std::string_view ip,uint16_t portArg,bool ipv6){
 	if(ipv6||strchr(ip.data(),':')){
 		memZero(&addr6_,sizeof(addr6_));
-		fromIpPort(ip.data(),portArg,&addr6_);
+		sockets::fromIpPort(ip.data(),portArg,&addr6_);
+	}else{
+		memZero(&addr_, sizeof(addr_));
+		sockets::fromIpPort(ip.data(),portArg,&addr_);
 	}
 }
 
+std::string InetAddress::toPortIp()const{
+	char buf[64];
+	sockets::toIpPort(buf, sizeof(buf),getSockAddr());
+	return buf;
+}
+
+std::string InetAddress::toIp()const{
+	char buf[64];
+	sockets::toIp(buf,sizeof(buf),getSockAddr());
+	return buf;
+}
+
+uint32_t InetAddress::ipv4NetEndian()const{
+	assert(addr_.sin_family==AF_INET);
+	return addr_.sin_addr.s_addr;
+}
+
+uint16_t InetAddress::port()const{
+	return networkToHost16(portNetEndian());
+}
+
+static thread_local char t_resolveBuffer[64 * 1024];
+
+bool InetAddress::resolve(std::string_view hostname, InetAddress *out){
+	assert(out!=nullptr);
+	struct hostent hent;
+	struct hostent* he=nullptr;
+	int herrno=0;
+	memZero(&hent, sizeof(hent));
+	int ret=gethostbyname_r(hostname.data(),&hent,t_resolveBuffer,sizeof(t_resolveBuffer), &he, &herrno);
+	if(ret==0&&he!=nullptr){
+		assert(he->h_addrtype==AF_INET&&he->h_length==sizeof(uint32_t));
+		out->addr_.sin_addr=*reinterpret_cast<struct in_addr*>(he->h_addr);
+		return true;
+	}else{
+		if(ret){
+			LOG_SYSERR<<"resolve()";
+		}
+		return false;
+	}
+}
+
+void InetAddress::setScopeId(uint32_t scope_id){
+	if(family()==AF_INET6){
+		addr6_.sin6_scope_id=scope_id;
+	}
+}

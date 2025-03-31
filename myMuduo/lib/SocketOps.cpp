@@ -2,6 +2,7 @@
 #include "Classes.hpp"
 #include "Logging.hpp"
 #include "Endian.hpp"
+#include <asm-generic/socket.h>
 #include <cassert>
 #include <cerrno>
 #include <cstddef>
@@ -186,4 +187,66 @@ void sockets::toIpPort(char *buf, size_t size, const struct sockaddr *addr){
 	assert(size>end);
 	snprintf(buf+end,size-end,":%u",port);
 
+}
+
+
+void sockets::fromIpPort(const char*ip,uint16_t port,struct sockaddr_in*addr){
+	addr->sin_family=AF_INET;
+	addr->sin_port=hostToNetwork16(port);
+	if(::inet_pton(AF_INET,ip,&addr->sin_addr)<=0){
+		LOG_SYSERR<<"fromIpPort()";
+	}
+}
+void sockets::fromIpPort(const char *ip, uint16_t port, struct sockaddr_in6 *addr){
+	addr->sin6_family=AF_INET6;
+	addr->sin6_port=hostToNetwork16(port);
+	if(::inet_pton(AF_INET6,ip,&addr->sin6_addr)<=0){
+		LOG_SYSERR<<"fromIpPort()"; 
+	}
+}
+
+int sockets::getSocketError(int sockfd){
+	int optval;
+	socklen_t optlen=static_cast<socklen_t>(sizeof(optval));
+	if(::getsockopt(sockfd,SOL_SOCKET,SO_ERROR,&optval,&optlen)<0){
+		return errno;
+	}else{
+		return optval;
+	}
+}
+
+struct sockaddr_in6 sockets::getLocalAddr(int sockfd){
+	struct sockaddr_in6 localAddr;
+	memZero(&localAddr, sizeof(localAddr));
+	socklen_t addrlen=static_cast<socklen_t>(sizeof(localAddr));
+	if(::getsockname(sockfd,sockaddr_cast(&localAddr),&addrlen)<0){
+		LOG_SYSERR<<"getLocalAddr()";
+	}
+	return localAddr;
+}
+
+struct sockaddr_in6 sockets::getPeerAddr(int sockfd){
+	struct sockaddr_in6 peerAddr;
+	memZero(&peerAddr,sizeof(peerAddr));
+	socklen_t addrlen=static_cast<socklen_t>(sizeof(peerAddr));
+	if(::getpeername(sockfd,sockaddr_cast(&peerAddr),&addrlen)<0){
+		LOG_SYSERR<<"getPeerAddr()";
+	}
+
+	return peerAddr;
+}
+
+bool sockets::isSlefConnect(int sockfd){
+	struct sockaddr_in6 localaddr=getLocalAddr(sockfd);
+	struct sockaddr_in6 peeraddr=getPeerAddr(sockfd);
+	if(localaddr.sin6_family==AF_INET){
+		struct sockaddr_in* localaddr4=reinterpret_cast<struct sockaddr_in*>(&localaddr);
+		struct sockaddr_in* peeraddr4=reinterpret_cast<struct sockaddr_in*>(&peeraddr);
+		return localaddr4->sin_port==peeraddr4->sin_port&&localaddr4->sin_addr.s_addr==peeraddr4->sin_addr.s_addr;
+	}else if(localaddr.sin6_family==AF_INET6){
+		return localaddr.sin6_port==peeraddr.sin6_port&&
+			memcmp(&localaddr.sin6_addr,&peeraddr.sin6_addr, sizeof(localaddr.sin6_addr))==0;
+	}else{
+		return false;
+	}
 }

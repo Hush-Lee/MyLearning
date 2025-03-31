@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <netinet/in.h>	
 #include <sys/socket.h>
+#include <string_view>
 
 const struct sockaddr* sockaddr_cast(const struct sockaddr_in6* addr);
 
@@ -21,10 +22,10 @@ public:
 
 	uint32_t ipv4NetEndian()const;
 	uint16_t portNetEndian()const{return addr_.sin_port;}
-	static bool resolve(std::string_view hostname,InetAddress* result);
+	static bool resolve(std::string_view hostname,InetAddress*out);
 
 
-	void getScopeId(uint32_t scope_id);
+	void setScopeId(uint32_t scope_id);
 private:
 	union{
 		struct sockaddr_in addr_;
