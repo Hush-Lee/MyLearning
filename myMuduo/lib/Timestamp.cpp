@@ -1,4 +1,5 @@
 #include "Timestamp.hpp"
+#include "Classes.hpp"
 #include <bits/types/struct_timeval.h>
 #include <sys/time.h>
 #include <cstdint>
