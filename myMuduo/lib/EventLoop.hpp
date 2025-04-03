@@ -11,6 +11,9 @@
 #include <mutex>
 #include <vector>
 #include <pthread.h>
+class Timestamp;
+class TimerId;
+class Channel;
 class EventLoop:noncopyable{
 public:
 	using Functor=std::function<void()>;
@@ -26,8 +29,8 @@ public:
 
 	size_t queueSize()const;
 	TimerId runAt(Timestamp time,TimerCallback cb);
-	TimerId runAfter(Timestamp delay,TimerCallback cb);
-	TimerId runEvery(Timestamp interval,TimerCallback cb);
+	TimerId runAfter(double delay,TimerCallback cb);
+	TimerId runEvery(double interval,TimerCallback cb);
 
 	void cancel(TimerId timerid);
 	void wakeup();

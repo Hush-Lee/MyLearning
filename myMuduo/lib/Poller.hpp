@@ -22,4 +22,4 @@ protected:
 	ChannelMap channels_;
 private:
 	EventLoop* ownerLoop_;
-}
+};
