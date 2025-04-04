@@ -4,14 +4,18 @@
 #include <mutex>
 #include <sys/signal.h>
 #include <sys/eventfd.h>
+#include <sys/types.h>
 #include <unistd.h>
 #include <utility>
+#include <vector>
 #include "Callback.hpp"
+#include "CurrentThread.hpp"
 #include "Logging.hpp"
 #include "Poller.hpp"
 #include "TimerQueue.hpp"
 #include "Channel.hpp"
 #include "Timestamp.hpp"
+#include "SocketOps.hpp"
 #include "TimerId.hpp"
 namespace {
 
@@ -162,4 +166,51 @@ void EventLoop::removeChannel(Channel*channel){
 		assert(currentActivceChannel_==channel||std::find(activeChannel_.begin(),activeChannel_.end(),channel)==activeChannel_.end());
 	}
 	poller_->removeChannel(channel);
+}
+
+bool EventLoop::hasChannel(Channel*channel){
+	assert(channel->ownerLoop()==this);
+	assertInLoopThread();
+	return poller_->hasChannel(channel);
+}
+
+void EventLoop::abortNotInLoopThread(){
+	LOG_FATAL<<"EventLoop::abortNotInLoopThread - EventLoop "<<this
+		<<" was created in threadId_ = "<<threadId_
+		<<",current thread id = "<<tid();
+}
+
+void EventLoop::wakeup(){
+	uint64_t one = 1;
+	ssize_t n =sockets::write(wakeupFd_,&one,sizeof(one));
+	if(n!=sizeof(one)){
+		LOG_ERROR<<"EventLoop::wakeup() reads "<<n<<"bytes instead of 8";
+	}
+}
+
+void EventLoop::handleRead(){
+	uint64_t one = 1;
+	ssize_t n =sockets::read(wakeupFd_,&one,sizeof(one));
+	if(n!=sizeof(one)){
+		LOG_ERROR<<"EventLoop::handleRead() reads "<<n<<"bytes instead of 8";
+	}
+}
+
+
+void EventLoop::doPendingFunctors(){
+	std::vector<Functor>functors;
+	callingPendingFunctors_=true;
+	{
+		std::lock_guard<std::mutex>lock(mutex_);
+		functors.swap(pendingFunctors_);
+	}
+	for(const auto& functor:functors){
+		functor();	
+	}
+	callingPendingFunctors_=false;
+}
+void EventLoop::printActiveChannels()const{
+	for(const Channel * channel:activeChannel_){
+		LOG_TRACE<<"{"<<channel->reventsToString()<<"}";
+	}
 }
