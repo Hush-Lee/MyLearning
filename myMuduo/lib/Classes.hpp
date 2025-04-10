@@ -16,5 +16,5 @@ protected:
 	~noncopyable()=default;
 public:
 	noncopyable(const noncopyable&)=delete;
-	noncopyable& operator=(const noncopyable&)=delete;
+	void  operator=(const noncopyable&)=delete;
 };

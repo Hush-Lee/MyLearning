@@ -6,12 +6,13 @@
 class Channel;
 class InetAddress;
 class EventLoop;
-class Connector:noncopyable,public std::enable_shared_from_this<Connector>{
+class Connector : noncopyable,
+			public std::enable_shared_from_this<Connector>{
 public:
 	using NewConnectionCallback=std::function<void(int sockfd)>;
 	Connector(EventLoop*loop,const InetAddress&serverAddr);
 	~Connector();
-	void setNewConnectionCallback(NewConnectionCallback cb){
+	void setNewConnectionCallback(const NewConnectionCallback& cb){
 		newConnectionCallback_=std::move(cb);
 	}
 	void start();
@@ -28,7 +29,7 @@ private:
 	void connect();
 	void connecting(int sockfd);
 	void handleWrite();
-	void handleErroe();
+	void handleError();
 	void retry(int sockfd);
 	int removeAndResetChannel();
 	void resetChannel();
