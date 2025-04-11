@@ -158,9 +158,9 @@ void Connector::retry(int sockfd){
 	sockets::close(sockfd);
 	setState(kDisConnected);
 	if(connect_){
-		LOG_INFO<<"Connector::retry - Retrying to "<<serverAddr_.toIpPort()<<" in "<<retryDelayMs_<<" milliseconds.";
+		LOG_INFO<<"Connector::retry - Retrying to "<<serverAddr_.toPortIp()<<" in "<<retryDelayMs_<<" milliseconds.";
 		loop_->runAfter(retryDelayMs_/1000.0, 
-				std::bind(&Connector::startInLoop , shared_from_this()));
+				std::bind(&Connector::startInLoop ,shared_from_this()));
 		retryDelayMs_=std::min(retryDelayMs_*2,kMaxRetryDelayMs);
 	}else{
 		LOG_DEBUG<<"do not connect";

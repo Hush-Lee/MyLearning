@@ -1,5 +1,6 @@
 #pragma once
 #include "Classes.hpp"
+#include "InetAddress.hpp"
 #include <memory>
 #include <functional>
 
@@ -7,7 +8,7 @@ class Channel;
 class InetAddress;
 class EventLoop;
 class Connector : noncopyable,
-			public std::enable_shared_from_this<Connector>{
+		public std::enable_shared_from_this<Connector>{
 public:
 	using NewConnectionCallback=std::function<void(int sockfd)>;
 	Connector(EventLoop*loop,const InetAddress&serverAddr);

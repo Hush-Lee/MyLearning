@@ -12,7 +12,6 @@
 #include <vector>
 #include <pthread.h>
 class Timestamp;
-class TimerId;
 class Channel;
 class EventLoop:noncopyable{
 public:
