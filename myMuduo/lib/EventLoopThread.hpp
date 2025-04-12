@@ -4,12 +4,13 @@
 #include <functional>
 #include <mutex>
 #include <thread>
+#include <string>
 class EventLoop
 
 class EventLoopThread:noncopyable{
 	public:
 		using ThreadInitCallback=std::function<void(EventLoop*)>;
-		EventLoopThread(const ThreadInitCallback& cb=ThreadInitCallback(),const string& name=string());
+		EventLoopThread(const ThreadInitCallback& cb=ThreadInitCallback(),const std::string& name=std::string());
 		~EventLoopThread();
 		EventLoop* startLoop();
 	private:
