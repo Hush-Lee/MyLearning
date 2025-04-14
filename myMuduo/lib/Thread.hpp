@@ -1,5 +1,6 @@
 #pragma once
 #include "Classes.hpp"
+#include <string>
 #include <atomic>
 #include <cstdint>
 #include <functional>

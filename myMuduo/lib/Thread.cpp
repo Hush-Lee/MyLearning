@@ -1,7 +1,13 @@
 #include "Thread.hpp"
 #include "CurrentThread.hpp"
 #include "Exception.hpp"
+#include "Timestamp.hpp"
+#include <atomic>
+#include <cstdint>
+#include <cstdio>
+#include <ctime>
 #include <exception>
+#include <iterator>
 #include <linux/prctl.h>
 #include <string>
 #include <pthread.h>
@@ -15,15 +21,15 @@ pid_t gettid(){
 	return static_cast<pid_t>(::syscall(SYS_gettid));
 }
 void after_fork(){
-	t_cachedTid=0;
-	t_threadName="main";
-	tid();
+	CurrentThread::t_cachedTid=0;
+	CurrentThread::t_threadName="main";
+	CurrentThread::tid();
 }
 class ThreadNameInitializet{
 public:
 	ThreadNameInitializet(){
-		t_threadName="main";
-		tid();
+		CurrentThread::t_threadName="main";
+		CurrentThread::tid();
 		pthread_atfork(nullptr,nullptr,&after_fork );
 	}
 };
@@ -68,4 +74,43 @@ struct ThreadData{
 		 throw; // rethrow
 	       }
 	}
+	
 };
+void* startThread(void *obj){
+	ThreadData* data=static_cast<ThreadData*>(obj);
+	data->runInThread();
+	delete data;
+	return nullptr;
+}
+
+
+void CurrentThread::cacheTid(){
+	if(t_cachedTid==0){
+		t_cachedTid=gettid();
+		t_tidStringLength=snprintf(t_tidString,sizeof(t_tidString),"%5d ",t_cachedTid);
+	}
+}
+
+bool CurrentThread::isMainThread(){
+	return tid()==::getpid();
+}
+
+void  CurrentThread::sleepUsec(int64_t usec){
+	struct timespec ts={0,0};
+	ts.tv_sec=static_cast<time_t>(usec/Timestamp::kMicrosecondsPerSecond);
+	ts.tv_nsec=static_cast<long>(usec%Timestamp::kMicrosecondsPerSecond*1000);
+	::nanosleep(&ts,nullptr);
+}
+
+std::atomic<int32_t> Thread::numCreated_;
+
+Thread::Thread(ThreadFunc func,const std::string&n):started_(false),
+	joined_(false),
+	pthreadId_(0),
+	tid_(0),
+	func_(std::move(func)),
+	name_(n),
+	latch_(1){
+		setDefaultName();
+	}
+

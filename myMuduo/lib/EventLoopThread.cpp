@@ -3,7 +3,6 @@
 #include <condition_variable>
 #include <functional>
 #include <mutex>
-#include <thread>
 
 EventLoopThread::EventLoopThread(const ThreadInitCallback& cb,const std::string& name)
 	:loop_(nullptr),
@@ -22,6 +21,6 @@ EventLoopThread::~EventLoopThread(){
 	}
 }
 EventLoop* EventLoopThread::startLoop(){
-	
+	assert(!thread_.started());
 }
 
