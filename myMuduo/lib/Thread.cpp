@@ -3,10 +3,12 @@
 #include "Exception.hpp"
 #include "Timestamp.hpp"
 #include <atomic>
+#include <cassert>
 #include <cstdint>
 #include <cstdio>
 #include <ctime>
 #include <exception>
+#include <functional>
 #include <iterator>
 #include <linux/prctl.h>
 #include <string>
@@ -113,4 +115,39 @@ Thread::Thread(ThreadFunc func,const std::string&n):started_(false),
 	latch_(1){
 		setDefaultName();
 	}
+
+Thread::~Thread(){
+	if(started_&&!joined_){
+		pthread_detach(pthreadId_);
+	}
+}
+
+void Thread::setDefaultName(){
+	int num = numCreated_.fetch_add(1);
+	if(name_.empty()){
+		char buf[32];
+		snprintf(buf,sizeof(buf),"Thread%d",num);
+		name_=buf;
+	}
+}
+
+void Thread::start(){
+	assert(!started_);
+	ThreadData*data =new ThreadData(func_,name_,&tid_,&latch_);
+	if(pthread_create(&pthreadId_,nullptr,&startThread,data)){
+		started_=false;
+		delete data;
+		LOG_SYSFATAL<<"Failed in pthread_create";
+	}else{
+		latch_.wait();
+		assert(tid_>0);
+	}
+}
+
+int Thread::join(){
+	assert(started_);
+	assert(!joined_);
+	joined_=true;
+	return pthread_join(pthreadId_,nullptr);
+}
 
