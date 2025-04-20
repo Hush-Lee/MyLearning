@@ -25,8 +25,8 @@ EventLoop* EventLoopThread::startLoop(){
 	thread_.start();
 	EventLoop*loop=nullptr;
 	std::unique_lock<std::mutex>ul(mutex_);
-	cond_.wait(ul,loop==nullptr);
-	loop_=loop;
+	cond_.wait(ul,loop_!=nullptr);
+	loop=loop_;
 	return loop;
 }
 

@@ -23,7 +23,7 @@ public:
 		return started_;
 	}
 	const std::string&name()const{
-		return name_k
+		return name_;
 	}
 
 	
