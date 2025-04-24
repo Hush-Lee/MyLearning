@@ -10,6 +10,7 @@
 class EventLoop;
 class Channel;
 class Socket;
+class Timestamp;
 class TcpConnection:noncopyable,
 	public std::enable_shared_from_this<TcpConnection>{
 public:
@@ -27,7 +28,7 @@ public:
 	std::string getTcpInfoString()const;
 
 	void send(const void *message,int len);
-	void send(const string_view& message);
+	void send(const std::string_view& message);
 
 	void send(Buffer*message);
 	void shutdown();
