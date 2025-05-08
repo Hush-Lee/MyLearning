@@ -1,0 +1,10 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build/cmake_install.cmake",
+		"/home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build/lib/cmake_install.cmake",
+		"/home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build/src/cmake_install.cmake",
+		"/home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build/test/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

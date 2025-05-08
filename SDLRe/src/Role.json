@@ -1,0 +1,24 @@
+{
+	"Part":["Skin","Costume","Eye","Hair","HairAdd","Hat","Glasses","Cloak","Makeup","Beard","Ear","Tial","Item","Shadow"],
+	"Texture":{
+		"Skin"     :  "../assets/characters/test/00Skin/Female001-04.png",
+		"Costume"  :  "../assets/characters/test/01Costume/Costume11.png",
+		"Eye"      :  "../assets/characters/test/02Eye/eye12.png",
+		"Hair"     :  "../assets/characters/test/03Hair/hair11.png",
+		"HairAdd"  :  "../assets/characters/test/04HairAdd/hairAdd3.png",
+		"Hat"      :  "../assets/characters/test/05Hat/hat11.png",
+		"Glasses"  :  "../assets/characters/test/06Glasses/glasses2.png",
+		"Cloak"    :  "../assets/characters/test/07Cloak/cloak3.png",
+		"Makeup"   :  "../assets/characters/test/08Makeup/makeup2.png",
+		"Beard"    :  "../assets/characters/test/09Beard/beard4.png",
+		"Ear"      :  "../assets/characters/test/10Ear/ear12.png",
+		"Tial"     :  "../assets/characters/test/11Tail/tail2.png",
+		"Item"     :  "../assets/characters/test/12Item/item12.png",
+		"Shadow"   :  "../assets/characters/test/13Shadow/shadow1.png"
+	},
+	"locate":{
+		"x":8,
+		"y":5,
+		"speed":1
+	}
+}

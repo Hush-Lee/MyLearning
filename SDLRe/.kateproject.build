@@ -1,0 +1,12 @@
+{
+    "Auto_generated": "This file is auto-generated. Any extra tags or formatting will be lost",
+    "target_sets": [
+        {
+            "cmake_config": "NONE",
+            "directory": "/home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build",
+            "loaded_via_cmake": true,
+            "name": "SDLRe@/home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build - [NONE]",
+            "targets": null
+        }
+    ]
+}
