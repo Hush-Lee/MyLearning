@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+PICTURE=/tmp/i3lock.png
+SCREENSHOT="scrot -z $PICTURE"
+
+BLUR="0x0"
+
+$SCREENSHOT
+convert $PICTURE -blur $BLUR $PICTURE
+i3lock -u -e -i $PICTURE
+rm $PICTURE
