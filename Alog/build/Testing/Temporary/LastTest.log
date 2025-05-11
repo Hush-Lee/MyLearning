@@ -1,0 +1,28 @@
+Start testing: May 10 03:55 CST
+----------------------------------------------------------
+1/1 Testing: test_heap
+1/1 Test: test_heap
+Command: "/home/hush-lee/Documents/Workspace/MyLearning/Alog/build/test/cpp_test"
+Directory: /home/hush-lee/Documents/Workspace/MyLearning/Alog/build/test
+"test_heap" start time: May 10 03:55 CST
+Output:
+----------------------------------------------------------
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from sort
+[ RUN      ] sort.heapsort
+[       OK ] sort.heapsort (0 ms)
+[----------] 1 test from sort (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"test_heap" end time: May 10 03:55 CST
+"test_heap" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: May 10 03:55 CST

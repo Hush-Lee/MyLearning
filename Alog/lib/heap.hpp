@@ -1,17 +1,13 @@
 #pragma once
 #include <vector>
-struct Node{
-	int data;
-	Node*left;
-	Node*right;
+
+class Heap {
+public:
+    void init(std::vector<int>& v);
+    static void maxHeapfiy(std::vector<int>&vec,int index, int heapsize);
+
 };
 
-class Heap{
-public:
-	void init(std::vector<int>&vec);
-	void maxHeapfiy(std::vector<int>&vec,int i,int heapsize);
-	void minHeapfiy(std::vector<int>&vec,int i,int heapsize);
-private:
-	Node* root_;
-	bool isMax_;
-};
+void heapSort(std::vector<int>& vec);
+
+

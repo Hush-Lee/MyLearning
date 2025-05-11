@@ -1,0 +1,10 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/hush-lee/Documents/Workspace/MyLearning/Alog/build/cmake_install.cmake",
+		"/home/hush-lee/Documents/Workspace/MyLearning/Alog/build/lib/cmake_install.cmake",
+		"/home/hush-lee/Documents/Workspace/MyLearning/Alog/build/src/cmake_install.cmake",
+		"/home/hush-lee/Documents/Workspace/MyLearning/Alog/build/test/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

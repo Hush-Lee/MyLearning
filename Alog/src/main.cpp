@@ -1,5 +1,7 @@
-	#include <iostream>
-	int main(){
-		std::cout<<"Hello World\n";
-		return 0;
-	}
+#include "../lib/heap.hpp"
+#include <vector>
+
+int main(){
+	std::vector<int> vec{3,1,6,8,2,5,9,4,7};
+	heapSort(vec);
+}

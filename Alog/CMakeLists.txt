@@ -1,7 +1,7 @@
 	cmake_minimum_required(VERSION 3.30)
 	project(Alog  LANGUAGES CXX)
 	
-	set(CXX_STANDARD 20)
+	set(CXX_STANDARD 14)
 	set(CXX_STANdARF_REQUIRED OFF)
 	set(CXX_EXTENTIONS OFF)
 	add_subdirectory(lib)
