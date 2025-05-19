@@ -109,7 +109,7 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "/usr/lib/libSDL2-2.0.so.0.3200.54",
+				"fragment" : "/usr/lib/libSDL2-2.0.so.0.3200.56",
 				"role" : "libraries"
 			},
 			{

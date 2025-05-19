@@ -1,6 +1,7 @@
 /home/hush-lee/Documents/Workspace/MyLearning/Alog/build/CMakeFiles/test.dir
 /home/hush-lee/Documents/Workspace/MyLearning/Alog/build/CMakeFiles/edit_cache.dir
 /home/hush-lee/Documents/Workspace/MyLearning/Alog/build/CMakeFiles/rebuild_cache.dir
+/home/hush-lee/Documents/Workspace/MyLearning/Alog/build/lib/CMakeFiles/binarySearchTree.dir
 /home/hush-lee/Documents/Workspace/MyLearning/Alog/build/lib/CMakeFiles/heap.dir
 /home/hush-lee/Documents/Workspace/MyLearning/Alog/build/lib/CMakeFiles/test.dir
 /home/hush-lee/Documents/Workspace/MyLearning/Alog/build/lib/CMakeFiles/edit_cache.dir

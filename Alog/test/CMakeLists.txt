@@ -16,6 +16,7 @@ target_sources(cpp_test
 target_link_libraries(cpp_test
 	PRIVATE
 		heap
+        binarySearchTree
 		GTest::gtest_main
 )
 enable_testing()
@@ -24,3 +25,4 @@ add_test(
 	NAME test_heap
 	COMMAND cpp_test
 )
+

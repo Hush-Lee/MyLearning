@@ -97,8 +97,9 @@ test/cpp_test: test/CMakeFiles/cpp_test.dir/test.cpp.o
 test/cpp_test: test/CMakeFiles/cpp_test.dir/build.make
 test/cpp_test: test/CMakeFiles/cpp_test.dir/compiler_depend.ts
 test/cpp_test: lib/libheap.a
-test/cpp_test: /usr/lib/libgtest_main.so.1.16.0
-test/cpp_test: /usr/lib/libgtest.so.1.16.0
+test/cpp_test: lib/libbinarySearchTree.a
+test/cpp_test: /usr/lib/libgtest_main.so.1.17.0
+test/cpp_test: /usr/lib/libgtest.so.1.17.0
 test/cpp_test: test/CMakeFiles/cpp_test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/hush-lee/Documents/Workspace/MyLearning/Alog/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable cpp_test"
 	cd /home/hush-lee/Documents/Workspace/MyLearning/Alog/build/test && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cpp_test.dir/link.txt --verbose=$(VERBOSE)

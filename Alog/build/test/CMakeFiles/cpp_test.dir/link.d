@@ -4,8 +4,9 @@ cpp_test: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/crtbeginS.o \
   CMakeFiles/cpp_test.dir/test.cpp.o \
   ../lib/libheap.a \
-  /usr/lib/libgtest_main.so.1.16.0 \
-  /usr/lib/libgtest.so.1.16.0 \
+  ../lib/libbinarySearchTree.a \
+  /usr/lib/libgtest_main.so.1.17.0 \
+  /usr/lib/libgtest.so.1.17.0 \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libstdc++.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libm.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libm.so \
@@ -44,9 +45,11 @@ CMakeFiles/cpp_test.dir/test.cpp.o:
 
 ../lib/libheap.a:
 
-/usr/lib/libgtest_main.so.1.16.0:
+../lib/libbinarySearchTree.a:
 
-/usr/lib/libgtest.so.1.16.0:
+/usr/lib/libgtest_main.so.1.17.0:
+
+/usr/lib/libgtest.so.1.17.0:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libstdc++.so:
 

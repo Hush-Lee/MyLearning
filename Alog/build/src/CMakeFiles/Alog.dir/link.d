@@ -4,6 +4,7 @@ Alog: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/crtbeginS.o \
   CMakeFiles/Alog.dir/main.cpp.o \
   ../lib/libheap.a \
+  ../lib/libbinarySearchTree.a \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libstdc++.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libm.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libm.so \
@@ -41,6 +42,8 @@ Alog: \
 CMakeFiles/Alog.dir/main.cpp.o:
 
 ../lib/libheap.a:
+
+../lib/libbinarySearchTree.a:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/15.1.1/../../../../lib/libstdc++.so:
 

@@ -127,6 +127,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named binarySearchTree
+
+# Build rule for target.
+binarySearchTree: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 binarySearchTree
+.PHONY : binarySearchTree
+
+# fast build rule for target.
+binarySearchTree/fast:
+	$(MAKE) $(MAKESILENT) -f lib/CMakeFiles/binarySearchTree.dir/build.make lib/CMakeFiles/binarySearchTree.dir/build
+.PHONY : binarySearchTree/fast
+
+#=============================================================================
 # Target rules for targets named heap
 
 # Build rule for target.
@@ -175,6 +188,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... Alog"
+	@echo "... binarySearchTree"
 	@echo "... cpp_test"
 	@echo "... heap"
 .PHONY : help

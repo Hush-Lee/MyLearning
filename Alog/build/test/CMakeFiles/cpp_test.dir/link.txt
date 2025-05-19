@@ -1,1 +1,1 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/cpp_test.dir/link.d CMakeFiles/cpp_test.dir/test.cpp.o -o cpp_test  ../lib/libheap.a /usr/lib/libgtest_main.so.1.16.0 /usr/lib/libgtest.so.1.16.0
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/cpp_test.dir/link.d CMakeFiles/cpp_test.dir/test.cpp.o -o cpp_test  ../lib/libheap.a ../lib/libbinarySearchTree.a /usr/lib/libgtest_main.so.1.17.0 /usr/lib/libgtest.so.1.17.0

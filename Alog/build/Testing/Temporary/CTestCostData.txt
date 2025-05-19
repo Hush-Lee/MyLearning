@@ -1,4 +1,2 @@
-NANE 0 0
-google_test 0 0
-test_heap 2 0.0011294
+test_heap 2 0.00106375
 ---

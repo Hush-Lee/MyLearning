@@ -1,1 +1,1 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/Alog.dir/link.d CMakeFiles/Alog.dir/main.cpp.o -o Alog  ../lib/libheap.a
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/Alog.dir/link.d CMakeFiles/Alog.dir/main.cpp.o -o Alog  ../lib/libheap.a ../lib/libbinarySearchTree.a

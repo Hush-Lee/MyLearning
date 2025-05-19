@@ -127,6 +127,20 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+lib/CMakeFiles/binarySearchTree.dir/rule:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/Alog/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/CMakeFiles/binarySearchTree.dir/rule
+.PHONY : lib/CMakeFiles/binarySearchTree.dir/rule
+
+# Convenience name for target.
+binarySearchTree: lib/CMakeFiles/binarySearchTree.dir/rule
+.PHONY : binarySearchTree
+
+# fast build rule for target.
+binarySearchTree/fast:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/Alog/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/binarySearchTree.dir/build.make lib/CMakeFiles/binarySearchTree.dir/build
+.PHONY : binarySearchTree/fast
+
+# Convenience name for target.
 lib/CMakeFiles/heap.dir/rule:
 	cd /home/hush-lee/Documents/Workspace/MyLearning/Alog/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/CMakeFiles/heap.dir/rule
 .PHONY : lib/CMakeFiles/heap.dir/rule
@@ -139,6 +153,30 @@ heap: lib/CMakeFiles/heap.dir/rule
 heap/fast:
 	cd /home/hush-lee/Documents/Workspace/MyLearning/Alog/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/heap.dir/build.make lib/CMakeFiles/heap.dir/build
 .PHONY : heap/fast
+
+binarySearchTree.o: binarySearchTree.cpp.o
+.PHONY : binarySearchTree.o
+
+# target to build an object file
+binarySearchTree.cpp.o:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/Alog/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/binarySearchTree.dir/build.make lib/CMakeFiles/binarySearchTree.dir/binarySearchTree.cpp.o
+.PHONY : binarySearchTree.cpp.o
+
+binarySearchTree.i: binarySearchTree.cpp.i
+.PHONY : binarySearchTree.i
+
+# target to preprocess a source file
+binarySearchTree.cpp.i:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/Alog/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/binarySearchTree.dir/build.make lib/CMakeFiles/binarySearchTree.dir/binarySearchTree.cpp.i
+.PHONY : binarySearchTree.cpp.i
+
+binarySearchTree.s: binarySearchTree.cpp.s
+.PHONY : binarySearchTree.s
+
+# target to generate assembly for a file
+binarySearchTree.cpp.s:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/Alog/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/binarySearchTree.dir/build.make lib/CMakeFiles/binarySearchTree.dir/binarySearchTree.cpp.s
+.PHONY : binarySearchTree.cpp.s
 
 heap.o: heap.cpp.o
 .PHONY : heap.o
@@ -173,7 +211,11 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... binarySearchTree"
 	@echo "... heap"
+	@echo "... binarySearchTree.o"
+	@echo "... binarySearchTree.i"
+	@echo "... binarySearchTree.s"
 	@echo "... heap.o"
 	@echo "... heap.i"
 	@echo "... heap.s"

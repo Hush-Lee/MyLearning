@@ -97,6 +97,7 @@ src/Alog: src/CMakeFiles/Alog.dir/main.cpp.o
 src/Alog: src/CMakeFiles/Alog.dir/build.make
 src/Alog: src/CMakeFiles/Alog.dir/compiler_depend.ts
 src/Alog: lib/libheap.a
+src/Alog: lib/libbinarySearchTree.a
 src/Alog: src/CMakeFiles/Alog.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/hush-lee/Documents/Workspace/MyLearning/Alog/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Alog"
 	cd /home/hush-lee/Documents/Workspace/MyLearning/Alog/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Alog.dir/link.txt --verbose=$(VERBOSE)

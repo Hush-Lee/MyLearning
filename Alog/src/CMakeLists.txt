@@ -3,4 +3,5 @@ include_directories(../include)
 target_link_libraries(Alog
 	PRIVATE
 		heap
+        binarySearchTree
 )
