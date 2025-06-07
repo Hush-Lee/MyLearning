@@ -1,0 +1,10 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/build/cmake_install.cmake",
+		"/home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/build/lib/cmake_install.cmake",
+		"/home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/build/src/cmake_install.cmake",
+		"/home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/build/test/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

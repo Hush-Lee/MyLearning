@@ -1,0 +1,2 @@
+/usr/bin/ar qc libVulkanDemoLib.a CMakeFiles/VulkanDemoLib.dir/t.cpp.o
+/usr/bin/ranlib libVulkanDemoLib.a
