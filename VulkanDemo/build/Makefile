@@ -117,19 +117,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named VulkanDemoLib
-
-# Build rule for target.
-VulkanDemoLib: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 VulkanDemoLib
-.PHONY : VulkanDemoLib
-
-# fast build rule for target.
-VulkanDemoLib/fast:
-	$(MAKE) $(MAKESILENT) -f lib/CMakeFiles/VulkanDemoLib.dir/build.make lib/CMakeFiles/VulkanDemoLib.dir/build
-.PHONY : VulkanDemoLib/fast
-
-#=============================================================================
 # Target rules for targets named VulkanDemo
 
 # Build rule for target.
@@ -165,7 +152,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... run_tests"
 	@echo "... VulkanDemo"
-	@echo "... VulkanDemoLib"
 .PHONY : help
 
 

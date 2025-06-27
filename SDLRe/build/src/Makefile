@@ -127,121 +127,25 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-src/CMakeFiles/SDLRe.dir/rule:
-	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/SDLRe.dir/rule
-.PHONY : src/CMakeFiles/SDLRe.dir/rule
+src/CMakeFiles/SDLRE.dir/rule:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/SDLRE.dir/rule
+.PHONY : src/CMakeFiles/SDLRE.dir/rule
 
 # Convenience name for target.
-SDLRe: src/CMakeFiles/SDLRe.dir/rule
-.PHONY : SDLRe
+SDLRE: src/CMakeFiles/SDLRE.dir/rule
+.PHONY : SDLRE
 
 # fast build rule for target.
-SDLRe/fast:
-	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SDLRe.dir/build.make src/CMakeFiles/SDLRe.dir/build
-.PHONY : SDLRe/fast
-
-Game.o: Game.cpp.o
-.PHONY : Game.o
-
-# target to build an object file
-Game.cpp.o:
-	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SDLRe.dir/build.make src/CMakeFiles/SDLRe.dir/Game.cpp.o
-.PHONY : Game.cpp.o
-
-Game.i: Game.cpp.i
-.PHONY : Game.i
-
-# target to preprocess a source file
-Game.cpp.i:
-	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SDLRe.dir/build.make src/CMakeFiles/SDLRe.dir/Game.cpp.i
-.PHONY : Game.cpp.i
-
-Game.s: Game.cpp.s
-.PHONY : Game.s
-
-# target to generate assembly for a file
-Game.cpp.s:
-	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SDLRe.dir/build.make src/CMakeFiles/SDLRe.dir/Game.cpp.s
-.PHONY : Game.cpp.s
-
-MapManager.o: MapManager.cpp.o
-.PHONY : MapManager.o
-
-# target to build an object file
-MapManager.cpp.o:
-	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SDLRe.dir/build.make src/CMakeFiles/SDLRe.dir/MapManager.cpp.o
-.PHONY : MapManager.cpp.o
-
-MapManager.i: MapManager.cpp.i
-.PHONY : MapManager.i
-
-# target to preprocess a source file
-MapManager.cpp.i:
-	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SDLRe.dir/build.make src/CMakeFiles/SDLRe.dir/MapManager.cpp.i
-.PHONY : MapManager.cpp.i
-
-MapManager.s: MapManager.cpp.s
-.PHONY : MapManager.s
-
-# target to generate assembly for a file
-MapManager.cpp.s:
-	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SDLRe.dir/build.make src/CMakeFiles/SDLRe.dir/MapManager.cpp.s
-.PHONY : MapManager.cpp.s
-
-TextureManager.o: TextureManager.cpp.o
-.PHONY : TextureManager.o
-
-# target to build an object file
-TextureManager.cpp.o:
-	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SDLRe.dir/build.make src/CMakeFiles/SDLRe.dir/TextureManager.cpp.o
-.PHONY : TextureManager.cpp.o
-
-TextureManager.i: TextureManager.cpp.i
-.PHONY : TextureManager.i
-
-# target to preprocess a source file
-TextureManager.cpp.i:
-	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SDLRe.dir/build.make src/CMakeFiles/SDLRe.dir/TextureManager.cpp.i
-.PHONY : TextureManager.cpp.i
-
-TextureManager.s: TextureManager.cpp.s
-.PHONY : TextureManager.s
-
-# target to generate assembly for a file
-TextureManager.cpp.s:
-	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SDLRe.dir/build.make src/CMakeFiles/SDLRe.dir/TextureManager.cpp.s
-.PHONY : TextureManager.cpp.s
-
-TileMap.o: TileMap.cpp.o
-.PHONY : TileMap.o
-
-# target to build an object file
-TileMap.cpp.o:
-	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SDLRe.dir/build.make src/CMakeFiles/SDLRe.dir/TileMap.cpp.o
-.PHONY : TileMap.cpp.o
-
-TileMap.i: TileMap.cpp.i
-.PHONY : TileMap.i
-
-# target to preprocess a source file
-TileMap.cpp.i:
-	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SDLRe.dir/build.make src/CMakeFiles/SDLRe.dir/TileMap.cpp.i
-.PHONY : TileMap.cpp.i
-
-TileMap.s: TileMap.cpp.s
-.PHONY : TileMap.s
-
-# target to generate assembly for a file
-TileMap.cpp.s:
-	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SDLRe.dir/build.make src/CMakeFiles/SDLRe.dir/TileMap.cpp.s
-.PHONY : TileMap.cpp.s
+SDLRE/fast:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SDLRE.dir/build.make src/CMakeFiles/SDLRE.dir/build
+.PHONY : SDLRE/fast
 
 main.o: main.cpp.o
 .PHONY : main.o
 
 # target to build an object file
 main.cpp.o:
-	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SDLRe.dir/build.make src/CMakeFiles/SDLRe.dir/main.cpp.o
+	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SDLRE.dir/build.make src/CMakeFiles/SDLRE.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -249,7 +153,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SDLRe.dir/build.make src/CMakeFiles/SDLRe.dir/main.cpp.i
+	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SDLRE.dir/build.make src/CMakeFiles/SDLRE.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -257,7 +161,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SDLRe.dir/build.make src/CMakeFiles/SDLRe.dir/main.cpp.s
+	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/SDLRE.dir/build.make src/CMakeFiles/SDLRE.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -269,19 +173,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... SDLRe"
-	@echo "... Game.o"
-	@echo "... Game.i"
-	@echo "... Game.s"
-	@echo "... MapManager.o"
-	@echo "... MapManager.i"
-	@echo "... MapManager.s"
-	@echo "... TextureManager.o"
-	@echo "... TextureManager.i"
-	@echo "... TextureManager.s"
-	@echo "... TileMap.o"
-	@echo "... TileMap.i"
-	@echo "... TileMap.s"
+	@echo "... SDLRE"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

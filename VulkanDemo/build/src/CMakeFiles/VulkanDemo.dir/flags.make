@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/include -isystem /usr/include/SDL2
+CXX_INCLUDES = -I/home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/include
 
 CXX_FLAGS = -std=gnu++17
 

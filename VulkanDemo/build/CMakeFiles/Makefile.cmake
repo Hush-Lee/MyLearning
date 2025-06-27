@@ -72,7 +72,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "lib/CMakeFiles/VulkanDemoLib.dir/DependInfo.cmake"
   "src/CMakeFiles/VulkanDemo.dir/DependInfo.cmake"
   "test/CMakeFiles/run_tests.dir/DependInfo.cmake"
   )

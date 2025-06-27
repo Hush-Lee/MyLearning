@@ -1,6 +1,5 @@
 /home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/build/CMakeFiles/edit_cache.dir
 /home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/build/CMakeFiles/rebuild_cache.dir
-/home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/build/lib/CMakeFiles/VulkanDemoLib.dir
 /home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/build/lib/CMakeFiles/edit_cache.dir
 /home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/build/lib/CMakeFiles/rebuild_cache.dir
 /home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/build/src/CMakeFiles/VulkanDemo.dir

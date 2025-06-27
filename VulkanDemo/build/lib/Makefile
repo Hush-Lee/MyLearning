@@ -116,44 +116,6 @@ depend:
 	cd /home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-# Convenience name for target.
-lib/CMakeFiles/VulkanDemoLib.dir/rule:
-	cd /home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/CMakeFiles/VulkanDemoLib.dir/rule
-.PHONY : lib/CMakeFiles/VulkanDemoLib.dir/rule
-
-# Convenience name for target.
-VulkanDemoLib: lib/CMakeFiles/VulkanDemoLib.dir/rule
-.PHONY : VulkanDemoLib
-
-# fast build rule for target.
-VulkanDemoLib/fast:
-	cd /home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/VulkanDemoLib.dir/build.make lib/CMakeFiles/VulkanDemoLib.dir/build
-.PHONY : VulkanDemoLib/fast
-
-t.o: t.cpp.o
-.PHONY : t.o
-
-# target to build an object file
-t.cpp.o:
-	cd /home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/VulkanDemoLib.dir/build.make lib/CMakeFiles/VulkanDemoLib.dir/t.cpp.o
-.PHONY : t.cpp.o
-
-t.i: t.cpp.i
-.PHONY : t.i
-
-# target to preprocess a source file
-t.cpp.i:
-	cd /home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/VulkanDemoLib.dir/build.make lib/CMakeFiles/VulkanDemoLib.dir/t.cpp.i
-.PHONY : t.cpp.i
-
-t.s: t.cpp.s
-.PHONY : t.s
-
-# target to generate assembly for a file
-t.cpp.s:
-	cd /home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/VulkanDemoLib.dir/build.make lib/CMakeFiles/VulkanDemoLib.dir/t.cpp.s
-.PHONY : t.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -162,10 +124,6 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... VulkanDemoLib"
-	@echo "... t.o"
-	@echo "... t.i"
-	@echo "... t.s"
 .PHONY : help
 
 

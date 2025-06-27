@@ -1,0 +1,2 @@
+/usr/bin/ar qc libSDL2Lib.a CMakeFiles/SDL2Lib.dir/Game.cpp.o CMakeFiles/SDL2Lib.dir/MapManager.cpp.o CMakeFiles/SDL2Lib.dir/Npc.cpp.o CMakeFiles/SDL2Lib.dir/Player.cpp.o CMakeFiles/SDL2Lib.dir/TextureManager.cpp.o CMakeFiles/SDL2Lib.dir/TileMap.cpp.o
+/usr/bin/ranlib libSDL2Lib.a

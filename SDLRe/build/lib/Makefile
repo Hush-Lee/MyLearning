@@ -126,6 +126,164 @@ depend:
 	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
+# Convenience name for target.
+lib/CMakeFiles/SDL2Lib.dir/rule:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/CMakeFiles/SDL2Lib.dir/rule
+.PHONY : lib/CMakeFiles/SDL2Lib.dir/rule
+
+# Convenience name for target.
+SDL2Lib: lib/CMakeFiles/SDL2Lib.dir/rule
+.PHONY : SDL2Lib
+
+# fast build rule for target.
+SDL2Lib/fast:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/SDL2Lib.dir/build.make lib/CMakeFiles/SDL2Lib.dir/build
+.PHONY : SDL2Lib/fast
+
+Game.o: Game.cpp.o
+.PHONY : Game.o
+
+# target to build an object file
+Game.cpp.o:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/SDL2Lib.dir/build.make lib/CMakeFiles/SDL2Lib.dir/Game.cpp.o
+.PHONY : Game.cpp.o
+
+Game.i: Game.cpp.i
+.PHONY : Game.i
+
+# target to preprocess a source file
+Game.cpp.i:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/SDL2Lib.dir/build.make lib/CMakeFiles/SDL2Lib.dir/Game.cpp.i
+.PHONY : Game.cpp.i
+
+Game.s: Game.cpp.s
+.PHONY : Game.s
+
+# target to generate assembly for a file
+Game.cpp.s:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/SDL2Lib.dir/build.make lib/CMakeFiles/SDL2Lib.dir/Game.cpp.s
+.PHONY : Game.cpp.s
+
+MapManager.o: MapManager.cpp.o
+.PHONY : MapManager.o
+
+# target to build an object file
+MapManager.cpp.o:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/SDL2Lib.dir/build.make lib/CMakeFiles/SDL2Lib.dir/MapManager.cpp.o
+.PHONY : MapManager.cpp.o
+
+MapManager.i: MapManager.cpp.i
+.PHONY : MapManager.i
+
+# target to preprocess a source file
+MapManager.cpp.i:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/SDL2Lib.dir/build.make lib/CMakeFiles/SDL2Lib.dir/MapManager.cpp.i
+.PHONY : MapManager.cpp.i
+
+MapManager.s: MapManager.cpp.s
+.PHONY : MapManager.s
+
+# target to generate assembly for a file
+MapManager.cpp.s:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/SDL2Lib.dir/build.make lib/CMakeFiles/SDL2Lib.dir/MapManager.cpp.s
+.PHONY : MapManager.cpp.s
+
+Npc.o: Npc.cpp.o
+.PHONY : Npc.o
+
+# target to build an object file
+Npc.cpp.o:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/SDL2Lib.dir/build.make lib/CMakeFiles/SDL2Lib.dir/Npc.cpp.o
+.PHONY : Npc.cpp.o
+
+Npc.i: Npc.cpp.i
+.PHONY : Npc.i
+
+# target to preprocess a source file
+Npc.cpp.i:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/SDL2Lib.dir/build.make lib/CMakeFiles/SDL2Lib.dir/Npc.cpp.i
+.PHONY : Npc.cpp.i
+
+Npc.s: Npc.cpp.s
+.PHONY : Npc.s
+
+# target to generate assembly for a file
+Npc.cpp.s:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/SDL2Lib.dir/build.make lib/CMakeFiles/SDL2Lib.dir/Npc.cpp.s
+.PHONY : Npc.cpp.s
+
+Player.o: Player.cpp.o
+.PHONY : Player.o
+
+# target to build an object file
+Player.cpp.o:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/SDL2Lib.dir/build.make lib/CMakeFiles/SDL2Lib.dir/Player.cpp.o
+.PHONY : Player.cpp.o
+
+Player.i: Player.cpp.i
+.PHONY : Player.i
+
+# target to preprocess a source file
+Player.cpp.i:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/SDL2Lib.dir/build.make lib/CMakeFiles/SDL2Lib.dir/Player.cpp.i
+.PHONY : Player.cpp.i
+
+Player.s: Player.cpp.s
+.PHONY : Player.s
+
+# target to generate assembly for a file
+Player.cpp.s:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/SDL2Lib.dir/build.make lib/CMakeFiles/SDL2Lib.dir/Player.cpp.s
+.PHONY : Player.cpp.s
+
+TextureManager.o: TextureManager.cpp.o
+.PHONY : TextureManager.o
+
+# target to build an object file
+TextureManager.cpp.o:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/SDL2Lib.dir/build.make lib/CMakeFiles/SDL2Lib.dir/TextureManager.cpp.o
+.PHONY : TextureManager.cpp.o
+
+TextureManager.i: TextureManager.cpp.i
+.PHONY : TextureManager.i
+
+# target to preprocess a source file
+TextureManager.cpp.i:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/SDL2Lib.dir/build.make lib/CMakeFiles/SDL2Lib.dir/TextureManager.cpp.i
+.PHONY : TextureManager.cpp.i
+
+TextureManager.s: TextureManager.cpp.s
+.PHONY : TextureManager.s
+
+# target to generate assembly for a file
+TextureManager.cpp.s:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/SDL2Lib.dir/build.make lib/CMakeFiles/SDL2Lib.dir/TextureManager.cpp.s
+.PHONY : TextureManager.cpp.s
+
+TileMap.o: TileMap.cpp.o
+.PHONY : TileMap.o
+
+# target to build an object file
+TileMap.cpp.o:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/SDL2Lib.dir/build.make lib/CMakeFiles/SDL2Lib.dir/TileMap.cpp.o
+.PHONY : TileMap.cpp.o
+
+TileMap.i: TileMap.cpp.i
+.PHONY : TileMap.i
+
+# target to preprocess a source file
+TileMap.cpp.i:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/SDL2Lib.dir/build.make lib/CMakeFiles/SDL2Lib.dir/TileMap.cpp.i
+.PHONY : TileMap.cpp.i
+
+TileMap.s: TileMap.cpp.s
+.PHONY : TileMap.s
+
+# target to generate assembly for a file
+TileMap.cpp.s:
+	cd /home/hush-lee/Documents/Workspace/MyLearning/SDLRe/build && $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/SDL2Lib.dir/build.make lib/CMakeFiles/SDL2Lib.dir/TileMap.cpp.s
+.PHONY : TileMap.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -135,6 +293,25 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... SDL2Lib"
+	@echo "... Game.o"
+	@echo "... Game.i"
+	@echo "... Game.s"
+	@echo "... MapManager.o"
+	@echo "... MapManager.i"
+	@echo "... MapManager.s"
+	@echo "... Npc.o"
+	@echo "... Npc.i"
+	@echo "... Npc.s"
+	@echo "... Player.o"
+	@echo "... Player.i"
+	@echo "... Player.s"
+	@echo "... TextureManager.o"
+	@echo "... TextureManager.i"
+	@echo "... TextureManager.s"
+	@echo "... TileMap.o"
+	@echo "... TileMap.i"
+	@echo "... TileMap.s"
 .PHONY : help
 
 

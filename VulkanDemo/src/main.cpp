@@ -1,76 +1,92 @@
 // src/main.cpp
-#include <vulkan/vulkan.h>
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_vulkan.h>
+#include <vulkan/vulkan.h>
 #include <iostream>
 #include <vector>
+#include <stdexcept>
 
-int main() {
+const uint32_t WIDTH = 800;
+const uint32_t HEIGHT = 600;
+
+void checkVk(VkResult result, const char* msg) {
+    if (result != VK_SUCCESS) {
+        throw std::runtime_error(msg);
+    }
+}
+
+int main(int argc, char* argv[]) {
+    // 初始化 SDL
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
-        std::cerr << "Failed to initialize SDL: " << SDL_GetError() << std::endl;
+        std::cerr << "SDL_Init failed: " << SDL_GetError() << std::endl;
         return -1;
     }
 
-    SDL_Window* window = SDL_CreateWindow("Vulkan Triangle", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-                                          800, 600, SDL_WINDOW_VULKAN | SDL_WINDOW_SHOWN);
+    SDL_Window* window = SDL_CreateWindow("SDL2 + Vulkan Init",
+        SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+        WIDTH, HEIGHT,
+        SDL_WINDOW_VULKAN | SDL_WINDOW_SHOWN);
+
     if (!window) {
-        std::cerr << "Failed to create SDL window: " << SDL_GetError() << std::endl;
+        std::cerr << "Failed to create SDL_Window\n";
         return -1;
     }
 
+    // Vulkan 实例
     VkInstance instance;
+    std::vector<const char*> extensions;
+
+    unsigned extCount;
+    if (!SDL_Vulkan_GetInstanceExtensions(window, &extCount, nullptr)) {
+        std::cerr << "Failed to get Vulkan extensions from SDL\n";
+        return -1;
+    }
+    extensions.resize(extCount);
+    SDL_Vulkan_GetInstanceExtensions(window, &extCount, extensions.data());
+
     VkApplicationInfo appInfo{};
     appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
-    appInfo.pApplicationName = "VulkanSDL2Triangle";
+    appInfo.pApplicationName = "3D Mota";
     appInfo.applicationVersion = VK_MAKE_VERSION(1, 0, 0);
     appInfo.pEngineName = "No Engine";
     appInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
-    appInfo.apiVersion = VK_API_VERSION_1_0;
-
-    unsigned int sdlExtensionCount = 0;
-    SDL_Vulkan_GetInstanceExtensions(window, &sdlExtensionCount, nullptr);
-    std::vector<const char*> extensions(sdlExtensionCount);
-    SDL_Vulkan_GetInstanceExtensions(window, &sdlExtensionCount, extensions.data());
+    appInfo.apiVersion = VK_API_VERSION_1_3;
 
     VkInstanceCreateInfo createInfo{};
     createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
     createInfo.pApplicationInfo = &appInfo;
-    createInfo.enabledExtensionCount = static_cast<uint32_t>(extensions.size());
+    createInfo.enabledExtensionCount = extCount;
     createInfo.ppEnabledExtensionNames = extensions.data();
 
-    if (vkCreateInstance(&createInfo, nullptr, &instance) != VK_SUCCESS) {
-        std::cerr << "Failed to create Vulkan instance!" << std::endl;
+    checkVk(vkCreateInstance(&createInfo, nullptr, &instance), "Failed to create Vulkan instance");
+
+    // 创建 surface
+    VkSurfaceKHR surface;
+    if (!SDL_Vulkan_CreateSurface(window, instance, &surface)) {
+        std::cerr << "Failed to create Vulkan surface\n";
         return -1;
     }
 
-    uint32_t deviceCount = 0;
-    vkEnumeratePhysicalDevices(instance, &deviceCount, nullptr);
-    if (deviceCount == 0) {
-        std::cerr << "Failed to find GPUs with Vulkan support!" << std::endl;
-        return -1;
-    }
+    std::cout << "SDL2 + Vulkan initialized successfully.\n";
 
-    std::vector<VkPhysicalDevice> devices(deviceCount);
-    vkEnumeratePhysicalDevices(instance, &deviceCount, devices.data());
-    VkPhysicalDevice physicalDevice = devices[0];
-
-    VkPhysicalDeviceProperties deviceProperties;
-    vkGetPhysicalDeviceProperties(physicalDevice, &deviceProperties);
-    std::cout << "Using GPU: " << deviceProperties.deviceName << std::endl;
-
+    // 主循环
     bool quit = false;
-    SDL_Event e;
+    SDL_Event event;
     while (!quit) {
-        while (SDL_PollEvent(&e)) {
-            if (e.type == SDL_QUIT) {
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_QUIT)
                 quit = true;
-            }
         }
+        SDL_Delay(16); // ~60 FPS
     }
 
+    // 清理
+    vkDestroySurfaceKHR(instance, surface, nullptr);
     vkDestroyInstance(instance, nullptr);
     SDL_DestroyWindow(window);
     SDL_Quit();
+
     return 0;
 }
-	
+

@@ -127,17 +127,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named SDLRe
+# Target rules for targets named SDL2Lib
 
 # Build rule for target.
-SDLRe: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 SDLRe
-.PHONY : SDLRe
+SDL2Lib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 SDL2Lib
+.PHONY : SDL2Lib
 
 # fast build rule for target.
-SDLRe/fast:
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/SDLRe.dir/build.make src/CMakeFiles/SDLRe.dir/build
-.PHONY : SDLRe/fast
+SDL2Lib/fast:
+	$(MAKE) $(MAKESILENT) -f lib/CMakeFiles/SDL2Lib.dir/build.make lib/CMakeFiles/SDL2Lib.dir/build
+.PHONY : SDL2Lib/fast
+
+#=============================================================================
+# Target rules for targets named SDLRE
+
+# Build rule for target.
+SDLRE: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 SDLRE
+.PHONY : SDLRE
+
+# fast build rule for target.
+SDLRE/fast:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/SDLRE.dir/build.make src/CMakeFiles/SDLRE.dir/build
+.PHONY : SDLRE/fast
 
 # Help Target
 help:
@@ -148,7 +161,8 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... SDLRe"
+	@echo "... SDL2Lib"
+	@echo "... SDLRE"
 .PHONY : help
 
 

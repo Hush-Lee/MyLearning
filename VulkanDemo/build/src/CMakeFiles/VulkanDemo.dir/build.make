@@ -96,10 +96,6 @@ VulkanDemo_EXTERNAL_OBJECTS =
 src/VulkanDemo: src/CMakeFiles/VulkanDemo.dir/main.cpp.o
 src/VulkanDemo: src/CMakeFiles/VulkanDemo.dir/build.make
 src/VulkanDemo: src/CMakeFiles/VulkanDemo.dir/compiler_depend.ts
-src/VulkanDemo: lib/libVulkanDemoLib.a
-src/VulkanDemo: /lib/libvulkan.so
-src/VulkanDemo: /usr/lib/libSDL2main.a
-src/VulkanDemo: /usr/lib/libSDL2-2.0.so.0.3200.56
 src/VulkanDemo: src/CMakeFiles/VulkanDemo.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable VulkanDemo"
 	cd /home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/VulkanDemo.dir/link.txt --verbose=$(VERBOSE)

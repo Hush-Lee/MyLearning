@@ -90,11 +90,11 @@ clean: test/clean
 # Directory level rules for directory lib
 
 # Recursive "all" directory target.
-lib/all: lib/CMakeFiles/VulkanDemoLib.dir/all
+lib/all:
 .PHONY : lib/all
 
 # Recursive "codegen" directory target.
-lib/codegen: lib/CMakeFiles/VulkanDemoLib.dir/codegen
+lib/codegen:
 .PHONY : lib/codegen
 
 # Recursive "preinstall" directory target.
@@ -102,7 +102,7 @@ lib/preinstall:
 .PHONY : lib/preinstall
 
 # Recursive "clean" directory target.
-lib/clean: lib/CMakeFiles/VulkanDemoLib.dir/clean
+lib/clean:
 .PHONY : lib/clean
 
 #=============================================================================
@@ -144,42 +144,10 @@ test/clean: test/CMakeFiles/run_tests.dir/clean
 .PHONY : test/clean
 
 #=============================================================================
-# Target rules for target lib/CMakeFiles/VulkanDemoLib.dir
-
-# All Build rule for target.
-lib/CMakeFiles/VulkanDemoLib.dir/all:
-	$(MAKE) $(MAKESILENT) -f lib/CMakeFiles/VulkanDemoLib.dir/build.make lib/CMakeFiles/VulkanDemoLib.dir/depend
-	$(MAKE) $(MAKESILENT) -f lib/CMakeFiles/VulkanDemoLib.dir/build.make lib/CMakeFiles/VulkanDemoLib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/build/CMakeFiles --progress-num=3,4 "Built target VulkanDemoLib"
-.PHONY : lib/CMakeFiles/VulkanDemoLib.dir/all
-
-# Build rule for subdir invocation for target.
-lib/CMakeFiles/VulkanDemoLib.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/CMakeFiles/VulkanDemoLib.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/build/CMakeFiles 0
-.PHONY : lib/CMakeFiles/VulkanDemoLib.dir/rule
-
-# Convenience name for target.
-VulkanDemoLib: lib/CMakeFiles/VulkanDemoLib.dir/rule
-.PHONY : VulkanDemoLib
-
-# codegen rule for target.
-lib/CMakeFiles/VulkanDemoLib.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f lib/CMakeFiles/VulkanDemoLib.dir/build.make lib/CMakeFiles/VulkanDemoLib.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/build/CMakeFiles --progress-num=3,4 "Finished codegen for target VulkanDemoLib"
-.PHONY : lib/CMakeFiles/VulkanDemoLib.dir/codegen
-
-# clean rule for target.
-lib/CMakeFiles/VulkanDemoLib.dir/clean:
-	$(MAKE) $(MAKESILENT) -f lib/CMakeFiles/VulkanDemoLib.dir/build.make lib/CMakeFiles/VulkanDemoLib.dir/clean
-.PHONY : lib/CMakeFiles/VulkanDemoLib.dir/clean
-
-#=============================================================================
 # Target rules for target src/CMakeFiles/VulkanDemo.dir
 
 # All Build rule for target.
-src/CMakeFiles/VulkanDemo.dir/all: lib/CMakeFiles/VulkanDemoLib.dir/all
+src/CMakeFiles/VulkanDemo.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/VulkanDemo.dir/build.make src/CMakeFiles/VulkanDemo.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/VulkanDemo.dir/build.make src/CMakeFiles/VulkanDemo.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/build/CMakeFiles --progress-num=1,2 "Built target VulkanDemo"
@@ -187,7 +155,7 @@ src/CMakeFiles/VulkanDemo.dir/all: lib/CMakeFiles/VulkanDemoLib.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/VulkanDemo.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/VulkanDemo.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/hush-lee/Documents/Workspace/MyLearning/VulkanDemo/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/VulkanDemo.dir/rule
